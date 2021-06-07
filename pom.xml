@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.phronmophobic</groupId>
+  <artifactId>mobiletest</artifactId>
+  <version>1.00-beta-1</version>
+  <name>com.phronmophobic/mobiletest</name>
+  <description>FIXME: my new library.</description>
+  <url>https://github.com/com.phronmophobic/mobiletest</url>
+  <licenses>
+    <license>
+      <name>Eclipse Public License</name>
+      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Adrian</name>
+    </developer>
+  </developers>
+  <scm>
+    <url>https://github.com/com.phronmophobic/mobiletest</url>
+    <connection>scm:git:git://github.com/com.phronmophobic/mobiletest.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/com.phronmophobic/mobiletest.git</developerConnection>
+    <tag>v1.00-beta-1</tag>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.10.3</version>
+    </dependency>
+    <dependency>
+      <groupId>cnuernber</groupId>
+      <artifactId>dtype-next</artifactId>
+      <version>7.04</version>
+    </dependency>
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>5.8.0</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+  </build>
+  <repositories>
+    <repository>
+      <id>clojars</id>
+      <url>https://repo.clojars.org/</url>
+    </repository>
+  </repositories>
+  <distributionManagement>
+    <repository>
+      <id>clojars</id>
+      <name>Clojars repository</name>
+      <url>https://clojars.org/repo</url>
+    </repository>
+  </distributionManagement>
+</project>
