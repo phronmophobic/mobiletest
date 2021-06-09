@@ -6,6 +6,8 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "$DIR"
 
+PROJECT_DIR="$DIR/.."
+
 cd ..
 
 rm -rf ./classes && mkdir classes
@@ -14,45 +16,12 @@ clojure -X:depstar
 
 pushd library
 
-# -Djdk.internal.lambda.eagerlyInitialize=false 
-# --no-server 
-# -H:+ExitAfterRelocatableImageWrite 
-# -H:+SharedLibrary 
-# -H:+AddAllCharsets 
-# -H:+ReportExceptionStackTraces 
-# -H:-DeadlockWatchdogExitOnTimeout 
-# -H:DeadlockWatchdogInterval=0 
-# -H:+RemoveSaturatedTypeFlows 
-# --features=org.graalvm.home.HomeFinderFeature 
-# -H:TempDirectory=/Users/adrian/workspace/gluon-samples/HelloGluon/target/gluonfx/arm64-ios/gvm/tmp 
-# -H:EnableURLProtocols=http,https 
-# --initialize-at-build-time=com.gluonhq.charm.glisten.visual.MaterialDesignIcon 
-# -H:ReflectionConfigurationFiles=/Users/adrian/workspace/gluon-samples/HelloGluon/target/gluonfx/arm64-ios/gvm/reflectionconfig-arm64-ios.json 
-# -H:JNIConfigurationFiles=/Users/adrian/workspace/gluon-samples/HelloGluon/target/gluonfx/arm64-ios/gvm/jniconfig-arm64-ios.json 
-# -H:ResourceConfigurationFiles=/Users/adrian/workspace/gluon-samples/HelloGluon/target/gluonfx/arm64-ios/gvm/resourceconfig-arm64-ios.json 
-# -H:CompilerBackend=llvm 
-# -H:-SpawnIsolates 
-# -H:PageSize=16384 
-# -Dsvm.targetName=iOS 
-# -Dsvm.targetArch=arm64 
-# -H:+UseCAPCache 
-# -H:CAPCacheDir=/Users/adrian/workspace/gluon-samples/HelloGluon/target/gluonfx/arm64-ios/gvm/capcache 
-# -H:IncludeResourceBundles=com/sun/javafx/scene/control/skin/resources/controls,com/sun/javafx/scene/control/skin/resources/controls-nt,com.sun.javafx.tk.quantum.QuantumMessagesBundle 
-# -Dsvm.platform=org.graalvm.nativeimage.Platform$IOS_AARCH64 
-# -cp /Users/adrian/workspace/gluon-samples/HelloGluon/target/gluonfx/arm64-ios/gvm/tmp/classpathJar.jar com.gluonhq.hello.HelloGluon
-
-
-    # -H:ReflectionConfigurationFiles=/Users/adrian/workspace/mobiletest/conf/reflectionconfig-arm64-ios.json \
-    # -H:JNIConfigurationFiles=/Users/adrian/workspace/mobiletest/conf/jniconfig-arm64-ios.json \
-    # -H:ResourceConfigurationFiles=/Users/adrian/workspace/mobiletest/conf/resourceconfig-arm64-ios.json \
-
 $GRAALVM_HOME/bin/native-image \
     --report-unsupported-elements-at-runtime \
     --initialize-at-build-time \
     --no-fallback \
     --no-server \
     -H:CompilerBackend=llvm \
-    --features=org.graalvm.home.HomeFinderFeature \
     -H:+ExitAfterRelocatableImageWrite \
     -H:+SharedLibrary \
     -H:+AddAllCharsets \
@@ -60,12 +29,14 @@ $GRAALVM_HOME/bin/native-image \
     -H:-DeadlockWatchdogExitOnTimeout \
     -H:DeadlockWatchdogInterval=0 \
     -H:+RemoveSaturatedTypeFlows \
-    -H:EnableURLProtocols=http,https \
     -H:-SpawnIsolates \
     -H:PageSize=16384 \
     -Djdk.internal.lambda.eagerlyInitialize=false \
     -H:+ReportExceptionStackTraces \
-    -H:TempDirectory=/Users/adrian/workspace/mobiletest/library/tmp \
+    -H:TempDirectory="$PROJECT_DIR"/library/tmp \
+    -H:ReflectionConfigurationFiles="${PROJECT_DIR}"/conf/reflectionconfig-arm64-ios.json \
+    -H:JNIConfigurationFiles="${PROJECT_DIR}"/conf/jniconfig-arm64-ios.json \
+    -H:ResourceConfigurationFiles="${PROJECT_DIR}"/conf/resourceconfig-arm64-ios.json \
     -J-Dclojure.spec.skip-macros=true \
     -J-Xmx20G \
     -J-XX:MaxDirectMemorySize=8G \
@@ -74,8 +45,23 @@ $GRAALVM_HOME/bin/native-image \
     -Dsvm.targetName=iOS \
     -Dsvm.targetArch=arm64 \
     -H:+UseCAPCache \
-    -H:CAPCacheDir=/Users/adrian/workspace/mobiletest/conf/capcache \
+    -H:CAPCacheDir="${PROJECT_DIR}"/conf/capcache \
     '-Dsvm.platform=org.graalvm.nativeimage.Platform$IOS_AARCH64' \
     -jar ../target/mobiletest-uber.jar -cp classes
+
+rm -rf ./build/out
+mkdir -p build/out
+
+# grab latest llvm.o file
+LLVM_PATH=`find . -name "llvm.o" -print0 |
+    xargs -r -0 ls -1 -t |
+    head -1`
+cp "$LLVM_PATH" build/out
+
+# grab latest mobiletest-uber.o file
+MOBILETEST_PATH=`find . -name "mobiletest-uber.o" -print0 |
+    xargs -r -0 ls -1 -t |
+    head -1`
+cp "$MOBILETEST_PATH" build/out
 
 popd
