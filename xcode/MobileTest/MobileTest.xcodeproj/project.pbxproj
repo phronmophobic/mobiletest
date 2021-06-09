@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2474DB2670393700990899 /* llvm.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2474D92670393700990899 /* llvm.o */; };
+		3A2474DC2670393700990899 /* mobiletest-uber.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2474DA2670393700990899 /* mobiletest-uber.o */; };
 		3A9F1D33266E9C4D0013661F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D32266E9C4D0013661F /* AppDelegate.swift */; };
 		3A9F1D35266E9C4D0013661F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D34266E9C4D0013661F /* SceneDelegate.swift */; };
 		3A9F1D37266E9C4D0013661F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D36266E9C4D0013661F /* ContentView.swift */; };
@@ -15,9 +17,6 @@
 		3A9F1D3F266E9C4F0013661F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A9F1D3D266E9C4F0013661F /* LaunchScreen.storyboard */; };
 		3A9F1D4A266E9C4F0013661F /* MobileTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D49266E9C4F0013661F /* MobileTestTests.swift */; };
 		3A9F1D55266E9C4F0013661F /* MobileTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D54266E9C4F0013661F /* MobileTestUITests.swift */; };
-		3A9F1D63266E9CA70013661F /* library in Resources */ = {isa = PBXBuildFile; fileRef = 3A9F1D62266E9CA70013661F /* library */; };
-		3A9F1D6E266EB5E30013661F /* mobiletest-uber.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9F1D6D266EB5E30013661F /* mobiletest-uber.o */; };
-		3A9F1D70266EB5F20013661F /* llvm.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9F1D6F266EB5F20013661F /* llvm.o */; };
 		3A9F1D72266EBA870013661F /* JvmFuncsFallbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D71266EBA870013661F /* JvmFuncsFallbacks.c */; };
 		3A9F1D74266EBD3E0013661F /* FromGluonAppDelegate.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D73266EBD3E0013661F /* FromGluonAppDelegate.c */; };
 		3A9F1D7A266EC1300013661F /* Bridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D79266EC1300013661F /* Bridge.c */; };
@@ -41,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A2474D92670393700990899 /* llvm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = llvm.o; path = ../../library/build/out/llvm.o; sourceTree = "<group>"; };
+		3A2474DA2670393700990899 /* mobiletest-uber.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "mobiletest-uber.o"; path = "../../library/build/out/mobiletest-uber.o"; sourceTree = "<group>"; };
 		3A9F1D2F266E9C4D0013661F /* MobileTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9F1D32266E9C4D0013661F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A9F1D34266E9C4D0013661F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,8 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A9F1D70266EB5F20013661F /* llvm.o in Frameworks */,
-				3A9F1D6E266EB5E30013661F /* mobiletest-uber.o in Frameworks */,
+				3A2474DB2670393700990899 /* llvm.o in Frameworks */,
+				3A2474DC2670393700990899 /* mobiletest-uber.o in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +168,8 @@
 				3A9F1D6D266EB5E30013661F /* mobiletest-uber.o */,
 				3A9F1D6B266EA9350013661F /* llvm.o */,
 				3A9F1D69266EA8490013661F /* mobiletest-uber.o */,
+				3A2474D92670393700990899 /* llvm.o */,
+				3A2474DA2670393700990899 /* mobiletest-uber.o */,
 				3A9F1D65266E9CCC0013661F /* libmobiletest.dylib */,
 			);
 			name = Frameworks;
@@ -276,7 +279,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A9F1D63266E9CA70013661F /* library in Resources */,
 				3A9F1D3F266E9C4F0013661F /* LaunchScreen.storyboard in Resources */,
 				3A9F1D3C266E9C4F0013661F /* Preview Assets.xcassets in Resources */,
 				3A9F1D39266E9C4F0013661F /* Assets.xcassets in Resources */,
@@ -411,7 +413,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
-					/Users/adrian/workspace/mobiletest/library,
+                                        "$(PROJECT_DIR)/../../library",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LIBRARY_SEARCH_PATHS = "";
@@ -477,7 +479,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
-					/Users/adrian/workspace/mobiletest/library,
+                                        "$(PROJECT_DIR)/../../library",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LIBRARY_SEARCH_PATHS = "";
@@ -512,7 +514,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
-					"-L/Users/adrian/.gluon/substrate/javaStaticSdk/11-ea+1/ios-arm64/labs-staticjdk/lib/static",
+                                        "-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
 					"-ljvm",
 					"-lnio",
 					"-ljava",
@@ -559,7 +561,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
-					"-L/Users/adrian/.gluon/substrate/javaStaticSdk/11-ea+1/ios-arm64/labs-staticjdk/lib/static",
+                                        "-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
 					"-ljvm",
 					"-lnio",
 					"-ljava",
