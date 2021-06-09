@@ -15,6 +15,7 @@ extern "C"{
 #endif
 
 long long int call_sub(long long int a, long long int b);
+long long int call_add(long long int a, long long int b);
 #ifdef __cplusplus
 }
 #endif
