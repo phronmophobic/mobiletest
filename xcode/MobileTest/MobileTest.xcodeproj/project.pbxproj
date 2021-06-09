@@ -56,7 +56,6 @@
 		3A9F1D50266E9C4F0013661F /* MobileTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9F1D54266E9C4F0013661F /* MobileTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileTestUITests.swift; sourceTree = "<group>"; };
 		3A9F1D56266E9C4F0013661F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A9F1D62266E9CA70013661F /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = library; path = ../../library; sourceTree = "<group>"; };
 		3A9F1D65266E9CCC0013661F /* libmobiletest.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmobiletest.dylib; path = ../../library/libmobiletest.dylib; sourceTree = "<group>"; };
 		3A9F1D69266EA8490013661F /* mobiletest-uber.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "mobiletest-uber.o"; path = "../../librar/tmp/SVM-1623093116307/mobiletest-uber.o"; sourceTree = "<group>"; };
 		3A9F1D6B266EA9350013661F /* llvm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = llvm.o; path = "../../librar/tmp/SVM-1623093116307/llvm/llvm.o"; sourceTree = "<group>"; };
@@ -102,7 +101,6 @@
 				3A9F1D79266EC1300013661F /* Bridge.c */,
 				3A9F1D73266EBD3E0013661F /* FromGluonAppDelegate.c */,
 				3A9F1D71266EBA870013661F /* JvmFuncsFallbacks.c */,
-				3A9F1D62266E9CA70013661F /* library */,
 				3A9F1D31266E9C4D0013661F /* MobileTest */,
 				3A9F1D48266E9C4F0013661F /* MobileTestTests */,
 				3A9F1D53266E9C4F0013661F /* MobileTestUITests */,
@@ -413,7 +411,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
-                                        "$(PROJECT_DIR)/../../library",
+					"$(PROJECT_DIR)/../../library",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LIBRARY_SEARCH_PATHS = "";
@@ -479,7 +477,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
-                                        "$(PROJECT_DIR)/../../library",
+					"$(PROJECT_DIR)/../../library",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LIBRARY_SEARCH_PATHS = "";
@@ -514,7 +512,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
-                                        "-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
 					"-ljvm",
 					"-lnio",
 					"-ljava",
@@ -561,7 +559,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
-                                        "-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
 					"-ljvm",
 					"-lnio",
 					"-ljava",
