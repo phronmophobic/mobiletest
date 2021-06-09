@@ -198,17 +198,17 @@ JNIEXPORT jobject JNICALL JVM_FindPrimitiveClass(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_FindSignal() {
+JNIEXPORT void JNICALL JVM_FindSignal(void) {
     fprintf(stderr, "JVM_FindSignal called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_FreeMemory() {
+JNIEXPORT void JNICALL JVM_FreeMemory(void) {
     fprintf(stderr, "JVM_FreeMemory called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_GC() {
+JNIEXPORT void JNICALL JVM_GC(void) {
     fprintf(stderr, "JVM_GC called:  Unimplemented\n");
     abort();
 }
@@ -393,7 +393,7 @@ JNIEXPORT jobject JNICALL JVM_GetInheritedAccessControlContext(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_GetManagement() {
+JNIEXPORT void JNICALL JVM_GetManagement(void) {
     fprintf(stderr, "JVM_GetManagement called:  Unimplemented\n");
     abort();
 }
@@ -608,7 +608,7 @@ JNIEXPORT jobject JNICALL JVM_IsSameClassPackage(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_IsSupportedJNIVersion() {
+JNIEXPORT void JNICALL JVM_IsSupportedJNIVersion(void) {
     fprintf(stderr, "JVM_IsSupportedJNIVersion called:  Unimplemented\n");
     abort();
 }
@@ -628,17 +628,17 @@ JNIEXPORT jobject JNICALL JVM_LatestUserDefinedLoader(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_LoadLibrary() {
+JNIEXPORT void JNICALL JVM_LoadLibrary(void) {
     fprintf(stderr, "JVM_LoadLibrary called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_MaxMemory() {
+JNIEXPORT void JNICALL JVM_MaxMemory(void) {
     fprintf(stderr, "JVM_MaxMemory called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_MaxObjectInspectionAge() {
+JNIEXPORT void JNICALL JVM_MaxObjectInspectionAge(void) {
     fprintf(stderr, "JVM_MaxObjectInspectionAge called:  Unimplemented\n");
     abort();
 }
@@ -663,7 +663,7 @@ JNIEXPORT jobject JNICALL JVM_MoreStackWalk(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_NativePath() {
+JNIEXPORT void JNICALL JVM_NativePath(void) {
     fprintf(stderr, "JVM_NativePath called:  Unimplemented\n");
     abort();
 }
@@ -683,37 +683,37 @@ JNIEXPORT jobject JNICALL JVM_NewMultiArray(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_RaiseSignal() {
+JNIEXPORT void JNICALL JVM_RaiseSignal(void) {
     fprintf(stderr, "JVM_RaiseSignal called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_RawMonitorCreate() {
+JNIEXPORT void JNICALL JVM_RawMonitorCreate(void) {
     fprintf(stderr, "JVM_RawMonitorCreate called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_RawMonitorDestroy() {
+JNIEXPORT void JNICALL JVM_RawMonitorDestroy(void) {
     fprintf(stderr, "JVM_RawMonitorDestroy called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_RawMonitorEnter() {
+JNIEXPORT void JNICALL JVM_RawMonitorEnter(void) {
     fprintf(stderr, "JVM_RawMonitorEnter called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_RawMonitorExit() {
+JNIEXPORT void JNICALL JVM_RawMonitorExit(void) {
     fprintf(stderr, "JVM_RawMonitorExit called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_RegisterSignal() {
+JNIEXPORT void JNICALL JVM_RegisterSignal(void) {
     fprintf(stderr, "JVM_RegisterSignal called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_ReleaseUTF() {
+JNIEXPORT void JNICALL JVM_ReleaseUTF(void) {
     fprintf(stderr, "JVM_ReleaseUTF called:  Unimplemented\n");
     abort();
 }
@@ -768,7 +768,7 @@ JNIEXPORT jobject JNICALL JVM_StopThread(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_SupportsCX8() {
+JNIEXPORT void JNICALL JVM_SupportsCX8(void) {
     fprintf(stderr, "JVM_SupportsCX8 called:  Unimplemented\n");
     abort();
 }
@@ -778,12 +778,12 @@ JNIEXPORT jobject JNICALL JVM_SuspendThread(JNIEnv *env) {
     return NULL;
 }
 
-JNIEXPORT void JNICALL JVM_TotalMemory() {
+JNIEXPORT void JNICALL JVM_TotalMemory(void) {
     fprintf(stderr, "JVM_TotalMemory called:  Unimplemented\n");
     abort();
 }
 
-JNIEXPORT void JNICALL JVM_UnloadLibrary() {
+JNIEXPORT void JNICALL JVM_UnloadLibrary(void) {
     fprintf(stderr, "JVM_UnloadLibrary called:  Unimplemented\n");
     abort();
 }
