@@ -14,6 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+
+        NSLog("gonna make the call");
+        let result2 = call_add(40, 2);
+        NSLog("made the call");
+        NSLog("the result is: %d",result2);
+
         NSLog("gonna make the call");
         let result = call_sub(44, 2);
         NSLog("made the call");
