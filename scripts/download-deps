@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -x
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd "$DIR"
+
+cd ..
+
+mkdir -p build
+
+pushd build
+
+target="ios-arm64"
+version="11-ea+1"
+
+fname="labs-staticjdk-${target}-gvm-${version}.zip"
+
+if [ ! -f "$fname" ]; then
+   curl -O "https://download2.gluonhq.com/substrate/staticjdk/${fname}"
+fi
+
+unzip "$fname"
+
+
+popd
