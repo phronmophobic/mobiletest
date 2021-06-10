@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        let eval_result = call_eval("(str \"hello\" ((partial + 2) 40)›)");
+        let eval_result = call_eval("(str \"hello\" ((partial + 2) 40))");
         
         call_prn(eval_result);
         
