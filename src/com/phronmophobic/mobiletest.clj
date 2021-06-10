@@ -1,5 +1,6 @@
 (ns com.phronmophobic.mobiletest
-  (:require [tech.v3.datatype.ffi :as dt-ffi])
+  (:require [tech.v3.datatype.ffi :as dt-ffi]
+            [sci.core :as sci])
   (:gen-class))
 
 
@@ -12,7 +13,11 @@
 
 (defn clj_print [bs]
   (when bs
-   (prn (dt-ffi/c->string bs))))
+    (prn (dt-ffi/c->string bs))))
+
+(defn clj_eval [bs]
+  (when bs
+    (prn (sci/eval-string (dt-ffi/c->string bs)))))
 
 (defn clj_print_hi []
   (println "hi"))
@@ -39,6 +44,9 @@
                              ['b :int64]]}
 
        #'clj_print {:rettype :void
+                    :argtypes [['bs :pointer]]}
+
+       #'clj_eval {:rettype :void
                     :argtypes [['bs :pointer]]}
 
        #'clj_print_hi {:rettype :void

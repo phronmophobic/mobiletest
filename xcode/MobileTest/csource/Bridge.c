@@ -59,3 +59,16 @@ void call_print_hi(void){
 
   clj_print_hi(thread);
 }
+
+void call_eval(const char* s){
+    
+    if ( !isolate ){
+      if (graal_create_isolate(NULL, &isolate, &thread) != 0) {
+        fprintf(stderr, "initialization error\n");
+        return;
+      }
+    }
+
+  clj_eval(thread,(void*)s);
+}
+
