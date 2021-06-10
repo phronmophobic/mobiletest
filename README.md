@@ -1,6 +1,6 @@
 # mobiletest
 
-An example of building a clojure library for iOS with native-image.
+An example of building a clojure library for iOS with graalvm native-image.
 
 ## Prerequisites
 
