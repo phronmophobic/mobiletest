@@ -60,7 +60,19 @@ void call_print_hi(void){
   clj_print_hi(thread);
 }
 
-void call_eval(const char* s){
+long long int call_eval(const char* s){
+    
+    if ( !isolate ){
+      if (graal_create_isolate(NULL, &isolate, &thread) != 0) {
+        fprintf(stderr, "initialization error\n");
+        return -1;
+      }
+    }
+
+    return clj_eval(thread,(void*)s);
+}
+
+void call_prn(long long int id){
     
     if ( !isolate ){
       if (graal_create_isolate(NULL, &isolate, &thread) != 0) {
@@ -69,6 +81,6 @@ void call_eval(const char* s){
       }
     }
 
-  clj_eval(thread,(void*)s);
+  clj_prn(thread,id);
 }
 
