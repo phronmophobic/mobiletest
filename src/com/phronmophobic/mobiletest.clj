@@ -1,4 +1,8 @@
-(ns com.phronmophobic.mobiletest)
+(ns com.phronmophobic.mobiletest
+  (:require [tech.v3.datatype.ffi :as dt-ffi])
+  (:gen-class))
+
+
 
 (defn clj_sub [a b]
   (- a b))
@@ -6,6 +10,16 @@
 (defn clj_add [a b]
   (+ a b))
 
+(defn clj_print [bs]
+  (when bs
+   (prn (dt-ffi/c->string bs))))
+
+(defn clj_print_hi []
+  (println "hi"))
+
+
+(defn -main [& args]
+  )
 
 (defn compile-interface-class
   ([]
@@ -21,8 +35,14 @@
                              ]}
 
        #'clj_add {:rettype :int64
-                 :argtypes [['a :int64]
-                            ['b :int64]]}
+                  :argtypes [['a :int64]
+                             ['b :int64]]}
+
+       #'clj_print {:rettype :void
+                    :argtypes [['bs :pointer]]}
+
+       #'clj_print_hi {:rettype :void
+                       :argtypes []}
 
        }
       'com.phonemophobic/MobileTest nil)))

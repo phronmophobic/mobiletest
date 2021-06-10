@@ -2,7 +2,7 @@
  :deps {org.clojure/clojure {:mvn/version "1.10.3"}
 
 
-        cnuernber/dtype-next           {:mvn/version "7.04"}
+        cnuernber/dtype-next           {:mvn/version "8.09"}
         net.java.dev.jna/jna           {:mvn/version "5.8.0"}}
  
 
@@ -11,7 +11,7 @@
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}}}
 
   :depstar
-  {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.193"}}
+  {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.216"}}
    :ns-default hf.depstar
    :aliases [:graal-compile]
    :exec-fn hf.depstar/uberjar
@@ -23,7 +23,7 @@
                :compile-ns [;;avclj.main avclj.libavclj
                             com.phronmophobic.mobiletest
                             ]
-               ;; :main-class avclj.main
+               :main-class com.phronmophobic.mobiletest
                :jar "target/mobiletest-uber.jar"
                ;;Disable tensor code generation and ensure direct linking.
                :jvm-opts ["-Dtech.v3.datatype.graal-native=true"
@@ -36,7 +36,7 @@
                  :sha "b6b3193fcc42659d7e46ecd1884a228993441182"}}
    :main-opts ["-m" "cognitect.test-runner"
                "-d" "test"]}
-  :jar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.211"}}
+  :jar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.216"}}
         :exec-fn hf.depstar/jar
         :exec-args {:jar "mobiletest.jar" :sync-pom true}}
   :install {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}

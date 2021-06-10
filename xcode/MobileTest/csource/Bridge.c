@@ -37,3 +37,25 @@ long long int call_add(long long int a, long long int b){
 
   return clj_add(thread, a, b);
 }
+
+void call_print(const char* s){
+    
+    if ( !isolate ){
+      if (graal_create_isolate(NULL, &isolate, &thread) != 0) {
+        fprintf(stderr, "initialization error\n");
+        return;
+      }
+    }
+
+  clj_print(thread,(void*)s);
+}
+void call_print_hi(void){
+    if ( !isolate ){
+      if (graal_create_isolate(NULL, &isolate, &thread) != 0) {
+        fprintf(stderr, "initialization error\n");
+        return;
+      }
+    }
+
+  clj_print_hi(thread);
+}

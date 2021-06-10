@@ -33,7 +33,7 @@
     <dependency>
       <groupId>cnuernber</groupId>
       <artifactId>dtype-next</artifactId>
-      <version>7.04</version>
+      <version>8.09</version>
     </dependency>
     <dependency>
       <groupId>net.java.dev.jna</groupId>
