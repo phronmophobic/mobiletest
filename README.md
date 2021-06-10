@@ -4,7 +4,7 @@ An example of building a clojure library for iOS with native-image.
 
 ## Prerequisites
 
-1. Download the arm64 static libraries java built for ios. They can be downloaded using `download-deps`
+1. Download the java's arm64 static libraries built for ios. They can be downloaded using `download-deps`
 
 ```sh
 
