@@ -8,7 +8,7 @@ An example of building a clojure library for iOS with native-image.
 
 ```sh
 
-scripts/download-deps
+$ scripts/download-deps
 ```
 
 2. Setup graalvm and make sure your clojure project is graalvm compatible. https://github.com/BrunoBonacci/graalvm-clojure
@@ -20,14 +20,14 @@ scripts/download-deps
 
 ```sh
 
-./scripts/compile-shared
+$ ./scripts/compile-shared
 
 ```
 
 2. Build your app
 
-a. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj
-b. Build and run
+3. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj  
+4. Build and run
 
 
 ## License
