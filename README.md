@@ -23,11 +23,8 @@ $ scripts/download-deps
 $ ./scripts/compile-shared
 
 ```
-
-2. Build your app
-
-3. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj  
-4. Build and run
+2. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj  
+3. Build and run
 
 
 ## License
