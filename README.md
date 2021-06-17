@@ -1,14 +1,14 @@
 # mobiletest
 
-An example of building a clojure library for iOS with native-image.
+An example of building a clojure library for iOS with graalvm native-image.
 
 ## Prerequisites
 
-1. Download the arm64 static libraries java built for ios. They can be downloaded using `download-deps`
+1. Download java's arm64 static libraries built for ios. They can be downloaded using `download-deps`
 
 ```sh
 
-scripts/download-deps
+$ scripts/download-deps
 ```
 
 2. Setup graalvm and make sure your clojure project is graalvm compatible. https://github.com/BrunoBonacci/graalvm-clojure
@@ -20,14 +20,11 @@ scripts/download-deps
 
 ```sh
 
-./scripts/compile-shared
+$ ./scripts/compile-shared
 
 ```
-
-2. Build your app
-
-a. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj
-b. Build and run
+2. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj  
+3. Build and run
 
 
 ## License
