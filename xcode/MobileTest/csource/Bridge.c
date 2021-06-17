@@ -84,3 +84,15 @@ void call_prn(long long int id){
   clj_prn(thread,id);
 }
 
+void call_start_server(){
+    
+    if ( !isolate ){
+      if (graal_create_isolate(NULL, &isolate, &thread) != 0) {
+        fprintf(stderr, "initialization error\n");
+        return;
+      }
+    }
+
+  clj_start_server(thread);
+}
+

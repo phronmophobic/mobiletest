@@ -36,6 +36,11 @@
       <version>0.2.5</version>
     </dependency>
     <dependency>
+      <groupId>babashka</groupId>
+      <artifactId>babashka</artifactId>
+      <version>0.4.4</version>
+    </dependency>
+    <dependency>
       <groupId>cnuernber</groupId>
       <artifactId>dtype-next</artifactId>
       <version>8.09</version>

@@ -18,6 +18,7 @@ long long int call_sub(long long int a, long long int b);
 long long int call_add(long long int a, long long int b);
 void call_print(const char* s);
 void call_prn(long long int id);
+void call_start_server(void);
 long long int call_eval(const char* s);
 void call_print_hi(void);
 #ifdef __cplusplus

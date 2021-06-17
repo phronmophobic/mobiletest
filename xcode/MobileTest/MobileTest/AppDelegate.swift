@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         call_prn(eval_result);
         
+        call_start_server();
+        
 
         let result2 = call_add(40, 2);
         NSLog("the result is: %d",result2);
