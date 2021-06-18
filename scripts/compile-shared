@@ -16,6 +16,8 @@ clojure -X:depstar
 
 pushd library
 
+rm -rf ./tmp
+
 $GRAALVM_HOME/bin/native-image \
     --report-unsupported-elements-at-runtime \
     --initialize-at-build-time \
