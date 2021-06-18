@@ -511,8 +511,8 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
-					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L\"$(SRCROOT)/../../build/labs-staticjdk/lib/static\"",
+					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
 					"-ljvm",
 					"-lnio",
 					"-ljava",
@@ -558,8 +558,8 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
-					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L\"$(SRCROOT)/../../build/labs-staticjdk/lib/static\"",
+					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
 					"-ljvm",
 					"-lnio",
 					"-ljava",
