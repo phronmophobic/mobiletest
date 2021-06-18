@@ -19,6 +19,7 @@ fname="labs-staticjdk-${target}-gvm-${version}.zip"
 
 if [ ! -f "$fname" ]; then
    curl -O "https://download2.gluonhq.com/substrate/staticjdk/${fname}"
+   unzip "$fname"
 fi
 
 unzip "$fname"
