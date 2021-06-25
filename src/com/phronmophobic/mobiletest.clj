@@ -87,3 +87,16 @@
       'com.phonemophobic.mobiletest.interface nil)))
   )
 
+(defn initialize-at-build-time-list [& args]
+  (println
+   (->> (map ns-name (all-ns))
+        (remove #(clojure.string/starts-with? % "clojure"))
+        (map #(clojure.string/split (str %) #"\."))
+        (keep butlast)
+        (map #(clojure.string/join "." %))
+        distinct
+        (map munge)
+        (cons "clojure")
+        (clojure.string/join ","))))
+
+
