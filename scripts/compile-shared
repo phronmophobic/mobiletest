@@ -14,13 +14,17 @@ rm -rf ./classes && mkdir classes
 clojure -X com.phronmophobic.mobiletest/compile-interface-class
 clojure -X:depstar
 
+# INITIALIZE_AT_BUILD_TIME=`clojure -X com.phronmophobic.mobiletest/initialize-at-build-time-list`
+INITIALIZE_AT_BUILD_TIME='clojure,tech.v3.datatype,sci.impl,babashka.nrepl,tech.v3.resource,bencode,flatland.ordered,com.phronmophobic,babashka.nrepl.impl,datascript,edamame.impl,tech.v3,tech.v3.parallel,sci.addons,tech.v3.datatype.ffi,sci,primitive_math,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy'
+
+
 pushd library
 
 rm -rf ./tmp
 
 $GRAALVM_HOME/bin/native-image \
     --report-unsupported-elements-at-runtime \
-    --initialize-at-build-time \
+    --initialize-at-build-time="$INITIALIZE_AT_BUILD_TIME" \
     --no-fallback \
     --no-server \
     -H:CompilerBackend=llvm \
