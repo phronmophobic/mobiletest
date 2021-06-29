@@ -58,16 +58,7 @@ $GRAALVM_HOME/bin/native-image \
 rm -rf ./build/out
 mkdir -p build/out
 
-# grab latest llvm.o file
-LLVM_PATH=`find . -name "llvm.o" -print0 |
-    xargs -r -0 ls -1 -t |
-    head -1`
-cp "$LLVM_PATH" build/out
-
-# grab latest mobiletest-uber.o file
-MOBILETEST_PATH=`find . -name "mobiletest-uber.o" -print0 |
-    xargs -r -0 ls -1 -t |
-    head -1`
-cp "$MOBILETEST_PATH" build/out
+find ./tmp -name 'llvm.o' -exec cp {} build/out \;
+find ./tmp -name 'mobiletest-uber.o' -exec cp {} build/out \;
 
 popd
