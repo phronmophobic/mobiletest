@@ -44,7 +44,7 @@ This can take a while. Sometimes it gets stuck right after the setup phase:
 If it gets stuck directly after setup and doesn't reach the clinit phase within 3-4 minutes, try stopping the script and restarting `./scripts/compile-shared`.
 
 2. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj  
-3. Select "Any iOS Device(arm64)" or your connected device as the build target.
+3. Select "Any iOS Device(arm64)" or your connected device as the build target. (iOS Simulator not supported yet)
 4. Build and run
 
 
