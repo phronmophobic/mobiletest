@@ -19,7 +19,7 @@
 		3A9F1D55266E9C4F0013661F /* MobileTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D54266E9C4F0013661F /* MobileTestUITests.swift */; };
 		3A9F1D72266EBA870013661F /* JvmFuncsFallbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D71266EBA870013661F /* JvmFuncsFallbacks.c */; };
 		3A9F1D74266EBD3E0013661F /* FromGluonAppDelegate.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D73266EBD3E0013661F /* FromGluonAppDelegate.c */; };
-		3A9F1D7A266EC1300013661F /* Bridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D79266EC1300013661F /* Bridge.c */; };
+		3A9F1D7A266EC1300013661F /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D79266EC1300013661F /* Bridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 		3A9F1D71266EBA870013661F /* JvmFuncsFallbacks.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = JvmFuncsFallbacks.c; path = csource/JvmFuncsFallbacks.c; sourceTree = "<group>"; };
 		3A9F1D73266EBD3E0013661F /* FromGluonAppDelegate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = FromGluonAppDelegate.c; path = csource/FromGluonAppDelegate.c; sourceTree = "<group>"; };
 		3A9F1D78266EC12F0013661F /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Bridge.h; path = csource/Bridge.h; sourceTree = "<group>"; };
-		3A9F1D79266EC1300013661F /* Bridge.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = Bridge.c; path = csource/Bridge.c; sourceTree = "<group>"; };
+		3A9F1D79266EC1300013661F /* Bridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Bridge.m; path = csource/Bridge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				3A9F1D78266EC12F0013661F /* Bridge.h */,
-				3A9F1D79266EC1300013661F /* Bridge.c */,
+				3A9F1D79266EC1300013661F /* Bridge.m */,
 				3A9F1D73266EBD3E0013661F /* FromGluonAppDelegate.c */,
 				3A9F1D71266EBA870013661F /* JvmFuncsFallbacks.c */,
 				3A9F1D31266E9C4D0013661F /* MobileTest */,
@@ -307,7 +307,7 @@
 				3A9F1D33266E9C4D0013661F /* AppDelegate.swift in Sources */,
 				3A9F1D74266EBD3E0013661F /* FromGluonAppDelegate.c in Sources */,
 				3A9F1D35266E9C4D0013661F /* SceneDelegate.swift in Sources */,
-				3A9F1D7A266EC1300013661F /* Bridge.c in Sources */,
+				3A9F1D7A266EC1300013661F /* Bridge.m in Sources */,
 				3A9F1D37266E9C4D0013661F /* ContentView.swift in Sources */,
 				3A9F1D72266EBA870013661F /* JvmFuncsFallbacks.c in Sources */,
 			);
@@ -413,7 +413,7 @@
 					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
 					"$(PROJECT_DIR)/../../library",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -479,7 +479,7 @@
 					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
 					"$(PROJECT_DIR)/../../library",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

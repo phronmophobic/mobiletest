@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A0761A9269A94E900E90293 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0761A8269A94E900E90293 /* CoreMotion.framework */; };
+		3A110A502676A38A00C5D250 /* MembraneView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3A110A4F2676A38A00C5D250 /* MembraneView.mm */; };
+		3A110A522676B06200C5D250 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A110A512676B06200C5D250 /* MetalKit.framework */; };
+		3A110A542676B0BD00C5D250 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A110A532676B0BD00C5D250 /* ModelIO.framework */; };
+		3A75F289267445BC0015D82C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F288267445BC0015D82C /* AppDelegate.m */; };
+		3A75F28C267445BC0015D82C /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F28B267445BC0015D82C /* Renderer.mm */; };
+		3A75F28F267445BC0015D82C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F28E267445BC0015D82C /* GameViewController.m */; };
+		3A75F291267445BC0015D82C /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F290267445BC0015D82C /* Shaders.metal */; };
+		3A75F295267445BC0015D82C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75F293267445BC0015D82C /* Main.storyboard */; };
+		3A75F297267445BD0015D82C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A75F296267445BD0015D82C /* Assets.xcassets */; };
+		3A75F29A267445BD0015D82C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F299267445BD0015D82C /* main.m */; };
+		3A75F2BD2675B3860015D82C /* JvmFuncCallbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F2BC2675B3860015D82C /* JvmFuncCallbacks.c */; };
+		3A75F2C72675C7B70015D82C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2C62675C7B70015D82C /* ImageIO.framework */; };
+		3A75F2CB2675C7CB0015D82C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2CA2675C7CB0015D82C /* CoreGraphics.framework */; };
+		3A75F2CD2675C7D70015D82C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2CC2675C7D60015D82C /* CoreText.framework */; };
+		3A75F2CF2675C7E60015D82C /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2CE2675C7E60015D82C /* Metal.framework */; };
+		3A75F2D12675C7EA0015D82C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2D02675C7EA0015D82C /* UIKit.framework */; };
+		3A75F2D32675C7F40015D82C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2D22675C7F40015D82C /* Foundation.framework */; };
+		3A75F2D52675C7FA0015D82C /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2D42675C7FA0015D82C /* CoreServices.framework */; };
+		3AC59C93269A422B00E9D1B8 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2D42675C7FA0015D82C /* CoreServices.framework */; };
+		3AC59C96269A431B00E9D1B8 /* llvm.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC59C94269A431B00E9D1B8 /* llvm.o */; };
+		3AC59C97269A431B00E9D1B8 /* mobiletest-uber.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC59C95269A431B00E9D1B8 /* mobiletest-uber.o */; };
+		3AC59C99269A445800E9D1B8 /* libmembraneiosskia.so in Embed Libraries (2 items) */ = {isa = PBXBuildFile; fileRef = 3AC59C98269A445800E9D1B8 /* libmembraneiosskia.so */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3AD591ED26918CF2000404A7 /* libskia.so in Embed Libraries (2 items) */ = {isa = PBXBuildFile; fileRef = 3AF1A67D26918C8F00E4DDF7 /* libskia.so */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3AD591EE26918D75000404A7 /* libskia.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF1A67D26918C8F00E4DDF7 /* libskia.so */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3A75F2AF26751C8A0015D82C /* Embed Libraries (2 items) */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				3AD591ED26918CF2000404A7 /* libskia.so in Embed Libraries (2 items) */,
+				3AC59C99269A445800E9D1B8 /* libmembraneiosskia.so in Embed Libraries (2 items) */,
+			);
+			name = "Embed Libraries (2 items)";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3A0761A8269A94E900E90293 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		3A110A4E2676A38A00C5D250 /* MembraneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembraneView.h; sourceTree = "<group>"; };
+		3A110A4F2676A38A00C5D250 /* MembraneView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MembraneView.mm; sourceTree = "<group>"; };
+		3A110A512676B06200C5D250 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		3A110A532676B0BD00C5D250 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
+		3A75F284267445BC0015D82C /* TestSkia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSkia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A75F287267445BC0015D82C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3A75F288267445BC0015D82C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3A75F28A267445BC0015D82C /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		3A75F28B267445BC0015D82C /* Renderer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Renderer.mm; sourceTree = "<group>"; };
+		3A75F28D267445BC0015D82C /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		3A75F28E267445BC0015D82C /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		3A75F290267445BC0015D82C /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		3A75F292267445BC0015D82C /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		3A75F294267445BC0015D82C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A75F296267445BD0015D82C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A75F298267445BD0015D82C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A75F299267445BD0015D82C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3A75F2B0267535460015D82C /* skia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = skia.h; sourceTree = "<group>"; };
+		3A75F2BC2675B3860015D82C /* JvmFuncCallbacks.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = JvmFuncCallbacks.c; sourceTree = "<group>"; };
+		3A75F2C62675C7B70015D82C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		3A75F2C82675C7C30015D82C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3A75F2CA2675C7CB0015D82C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3A75F2CC2675C7D60015D82C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		3A75F2CE2675C7E60015D82C /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		3A75F2D02675C7EA0015D82C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3A75F2D22675C7F40015D82C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3A75F2D42675C7FA0015D82C /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		3AC59C94269A431B00E9D1B8 /* llvm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = llvm.o; path = ../../library/build/out/llvm.o; sourceTree = "<group>"; };
+		3AC59C95269A431B00E9D1B8 /* mobiletest-uber.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "mobiletest-uber.o"; path = "../../library/build/out/mobiletest-uber.o"; sourceTree = "<group>"; };
+		3AC59C98269A445800E9D1B8 /* libmembraneiosskia.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmembraneiosskia.so; sourceTree = "<group>"; };
+		3AF1A67D26918C8F00E4DDF7 /* libskia.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libskia.so; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A75F281267445BB0015D82C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A0761A9269A94E900E90293 /* CoreMotion.framework in Frameworks */,
+				3AD591EE26918D75000404A7 /* libskia.so in Frameworks */,
+				3A110A542676B0BD00C5D250 /* ModelIO.framework in Frameworks */,
+				3A110A522676B06200C5D250 /* MetalKit.framework in Frameworks */,
+				3A75F2D52675C7FA0015D82C /* CoreServices.framework in Frameworks */,
+				3A75F2D32675C7F40015D82C /* Foundation.framework in Frameworks */,
+				3AC59C93269A422B00E9D1B8 /* CoreServices.framework in Frameworks */,
+				3A75F2D12675C7EA0015D82C /* UIKit.framework in Frameworks */,
+				3A75F2CF2675C7E60015D82C /* Metal.framework in Frameworks */,
+				3A75F2CD2675C7D70015D82C /* CoreText.framework in Frameworks */,
+				3A75F2CB2675C7CB0015D82C /* CoreGraphics.framework in Frameworks */,
+				3A75F2C72675C7B70015D82C /* ImageIO.framework in Frameworks */,
+				3AC59C96269A431B00E9D1B8 /* llvm.o in Frameworks */,
+				3AC59C97269A431B00E9D1B8 /* mobiletest-uber.o in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A75F27B267445BB0015D82C = {
+			isa = PBXGroup;
+			children = (
+				3A75F286267445BC0015D82C /* TestSkia */,
+				3A75F285267445BC0015D82C /* Products */,
+				3A75F2A72674696C0015D82C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3A75F285267445BC0015D82C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A75F284267445BC0015D82C /* TestSkia.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A75F286267445BC0015D82C /* TestSkia */ = {
+			isa = PBXGroup;
+			children = (
+				3A75F2B0267535460015D82C /* skia.h */,
+				3A75F287267445BC0015D82C /* AppDelegate.h */,
+				3A75F288267445BC0015D82C /* AppDelegate.m */,
+				3A75F28A267445BC0015D82C /* Renderer.h */,
+				3A75F28B267445BC0015D82C /* Renderer.mm */,
+				3A75F28D267445BC0015D82C /* GameViewController.h */,
+				3A75F28E267445BC0015D82C /* GameViewController.m */,
+				3A75F290267445BC0015D82C /* Shaders.metal */,
+				3A75F292267445BC0015D82C /* ShaderTypes.h */,
+				3A75F293267445BC0015D82C /* Main.storyboard */,
+				3A75F296267445BD0015D82C /* Assets.xcassets */,
+				3A75F298267445BD0015D82C /* Info.plist */,
+				3A75F299267445BD0015D82C /* main.m */,
+				3A75F2BC2675B3860015D82C /* JvmFuncCallbacks.c */,
+				3A110A4E2676A38A00C5D250 /* MembraneView.h */,
+				3A110A4F2676A38A00C5D250 /* MembraneView.mm */,
+			);
+			path = TestSkia;
+			sourceTree = "<group>";
+		};
+		3A75F2A72674696C0015D82C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A0761A8269A94E900E90293 /* CoreMotion.framework */,
+				3AC59C94269A431B00E9D1B8 /* llvm.o */,
+				3AC59C98269A445800E9D1B8 /* libmembraneiosskia.so */,
+				3AC59C95269A431B00E9D1B8 /* mobiletest-uber.o */,
+				3AF1A67D26918C8F00E4DDF7 /* libskia.so */,
+				3A110A532676B0BD00C5D250 /* ModelIO.framework */,
+				3A110A512676B06200C5D250 /* MetalKit.framework */,
+				3A75F2D42675C7FA0015D82C /* CoreServices.framework */,
+				3A75F2D22675C7F40015D82C /* Foundation.framework */,
+				3A75F2D02675C7EA0015D82C /* UIKit.framework */,
+				3A75F2CE2675C7E60015D82C /* Metal.framework */,
+				3A75F2CC2675C7D60015D82C /* CoreText.framework */,
+				3A75F2CA2675C7CB0015D82C /* CoreGraphics.framework */,
+				3A75F2C82675C7C30015D82C /* MobileCoreServices.framework */,
+				3A75F2C62675C7B70015D82C /* ImageIO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A75F283267445BB0015D82C /* TestSkia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A75F29D267445BD0015D82C /* Build configuration list for PBXNativeTarget "TestSkia" */;
+			buildPhases = (
+				3A75F280267445BB0015D82C /* Sources */,
+				3A75F281267445BB0015D82C /* Frameworks */,
+				3A75F282267445BB0015D82C /* Resources */,
+				3A75F2AF26751C8A0015D82C /* Embed Libraries (2 items) */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestSkia;
+			productName = TestSkia;
+			productReference = 3A75F284267445BC0015D82C /* TestSkia.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A75F27C267445BB0015D82C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					3A75F283267445BB0015D82C = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = 3A75F27F267445BB0015D82C /* Build configuration list for PBXProject "TestSkia" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A75F27B267445BB0015D82C;
+			productRefGroup = 3A75F285267445BC0015D82C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A75F283267445BB0015D82C /* TestSkia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A75F282267445BB0015D82C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A75F297267445BD0015D82C /* Assets.xcassets in Resources */,
+				3A75F295267445BC0015D82C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A75F280267445BB0015D82C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A75F29A267445BD0015D82C /* main.m in Sources */,
+				3A110A502676A38A00C5D250 /* MembraneView.mm in Sources */,
+				3A75F291267445BC0015D82C /* Shaders.metal in Sources */,
+				3A75F2BD2675B3860015D82C /* JvmFuncCallbacks.c in Sources */,
+				3A75F28C267445BC0015D82C /* Renderer.mm in Sources */,
+				3A75F28F267445BC0015D82C /* GameViewController.m in Sources */,
+				3A75F289267445BC0015D82C /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3A75F293267445BC0015D82C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A75F294267445BC0015D82C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A75F29B267445BD0015D82C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"TARGET_OS_IOS=1",
+					"SK_METAL=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestSkia",
+					"$(PROJECT_DIR)",
+					"\"$(SRCROOT)/../../library/build/out\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DTARGET_OS_IOS=1",
+				);
+				SDKROOT = iphoneos;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
+					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../third_party/skia/include/gpu/gl\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/private\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/utils\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/core\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/gpu\"",
+					"\"$(SRCROOT)/../../third_party/skia\"",
+					"\"$(SRCROOT)/../../library\"",
+				);
+			};
+			name = Debug;
+		};
+		3A75F29C267445BD0015D82C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestSkia",
+					"$(PROJECT_DIR)",
+					"\"$(SRCROOT)/../../library/build/out\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DTARGET_OS_IOS=1",
+				);
+				SDKROOT = iphoneos;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/darwin/",
+					"/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/include/",
+				);
+				USER_HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../third_party/skia/include/gpu/gl\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/private\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/utils\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/core\"",
+					"\"$(SRCROOT)/../../third_party/skia/include/gpu\"",
+					"\"$(SRCROOT)/../../third_party/skia\"",
+					"\"$(SRCROOT)/../../library\"",
+				);
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A75F29E267445BD0015D82C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4HTP8553GU;
+				INFOPLIST_FILE = TestSkia/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../",
+					./,
+					"@executable_path",
+					"@executable_path/",
+					"@executable_path/Frameworks",
+					"@loader_path/",
+				);
+				OTHER_LDFLAGS = (
+					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
+					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L\"$(SRCROOT)/\"",
+					"-ljvm",
+					"-lnio",
+					"-ljava",
+					"-lextnet",
+					"-ljaas",
+					"-lsunec",
+					"-lj2pkcs11",
+					"-ldl",
+					"-lz",
+					"-lfdlibm",
+					"-lprefs",
+					"-lnet",
+					"-lzip",
+					"-lstdc++",
+					"-ldarwin",
+					"-lffi",
+					"-llibchelper",
+					"-lpthread",
+					"-lmembraneiosskia",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phronemophobic.TestSkia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3A75F29F267445BD0015D82C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4HTP8553GU;
+				INFOPLIST_FILE = TestSkia/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../",
+					./,
+					"@executable_path",
+					"@executable_path/",
+					"@executable_path/Frameworks",
+					"@loader_path/",
+				);
+				OTHER_LDFLAGS = (
+					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
+					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L\"$(SRCROOT)/\"",
+					"-ljvm",
+					"-lnio",
+					"-ljava",
+					"-lextnet",
+					"-ljaas",
+					"-lsunec",
+					"-lj2pkcs11",
+					"-ldl",
+					"-lz",
+					"-lfdlibm",
+					"-lprefs",
+					"-lnet",
+					"-lzip",
+					"-lstdc++",
+					"-ldarwin",
+					"-lffi",
+					"-llibchelper",
+					"-lpthread",
+					"-lmembraneiosskia",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phronemophobic.TestSkia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A75F27F267445BB0015D82C /* Build configuration list for PBXProject "TestSkia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A75F29B267445BD0015D82C /* Debug */,
+				3A75F29C267445BD0015D82C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A75F29D267445BD0015D82C /* Build configuration list for PBXNativeTarget "TestSkia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A75F29E267445BD0015D82C /* Debug */,
+				3A75F29F267445BD0015D82C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A75F27C267445BB0015D82C /* Project object */;
+}

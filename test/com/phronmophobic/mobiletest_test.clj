@@ -1,6 +1,6 @@
-(ns com.phronmophobic.mobiletest-test
+(ns com.phronemophobic.mobiletest-test
   (:require [clojure.test :refer :all]
-            [com.phronmophobic.mobiletest :refer :all]))
+            [com.phronemophobic.mobiletest :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

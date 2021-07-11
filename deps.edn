@@ -1,10 +1,18 @@
-{:paths ["src" "classes"]
+{:paths ["src" "classes" "generated_classes" "library/classes"]
  :deps {org.clojure/clojure {:mvn/version "1.10.3"}
 
 
+        com.phronemophobic/membrane {;;:mvn/version "0.9.26-beta"
+                                     :sha "4710150931dd200f72d86d3f30528879ea44b72b"
+                                     :git/url "https://github.com/phronmophobic/membrane"
+                                     ;;:local/root "../membrane"
+                                     }
+
         borkdude/sci {:mvn/version "0.2.5"}
         babashka/babashka {:mvn/version "0.4.4"}
-        cnuernber/dtype-next           {:mvn/version "8.09"}
+        cnuernber/dtype-next           {:mvn/version "8.09"
+                                        ;;:local/root "../dtype-next"
+                                        }
         net.java.dev.jna/jna           {:mvn/version "5.8.0"}}
  
 
@@ -17,15 +25,35 @@
    :ns-default hf.depstar
    :aliases [:graal-compile]
    :exec-fn hf.depstar/uberjar
-   :exec-args {:group-id "com.phronmophobic"
+   :exec-args {:group-id "com.phronemophobic"
                :artifact-id "mobiletest"
                :version "1.00-beta-1"
                :sync-pom true
                :aot true
                :compile-ns [;;avclj.main avclj.libavclj
-                            com.phronmophobic.mobiletest
+                            com.phronemophobic.mobiletest
                             ]
-               :main-class com.phronmophobic.mobiletest
+               :main-class com.phronemophobic.mobiletest
+               :jar "target/mobiletest-uber.jar"
+               ;;Disable tensor code generation and ensure direct linking.
+               :jvm-opts ["-Dtech.v3.datatype.graal-native=true"
+                          "-Dclojure.compiler.direct-linking=true"
+                          "-Dclojure.spec.skip-macros=true"]}}
+
+  :depstar-membrane
+  {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.216"}}
+   :ns-default hf.depstar
+   :aliases [:graal-compile]
+   :exec-fn hf.depstar/uberjar
+   :exec-args {:group-id "com.phronemophobic.mobiletest"
+               :artifact-id "membrane"
+               :version "1.00-beta-1"
+               :sync-pom true
+               :aot true
+               :compile-ns [;;avclj.main avclj.libavclj
+                            com.phronemophobic.mobiletest.membrane
+                            ]
+               :main-class com.phronemophobic.mobiletest.membrane
                :jar "target/mobiletest-uber.jar"
                ;;Disable tensor code generation and ensure direct linking.
                :jvm-opts ["-Dtech.v3.datatype.graal-native=true"

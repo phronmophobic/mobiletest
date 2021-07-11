@@ -21,6 +21,10 @@ void call_prn(long long int id);
 void call_start_server(void);
 long long int call_eval(const char* s);
 void call_print_hi(void);
+
+long long int objc_msgSendU64(const char* s);
+void* objc_make_string(const char* s);
+void* objc_make_selector(const char* s);
 #ifdef __cplusplus
 }
 #endif
