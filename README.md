@@ -2,6 +2,13 @@
 
 An example of building a clojure library for iOS with graalvm native-image.
 
+
+## Game of Life Example
+
+See `examples/gol`
+
+![game-of-life](/game-of-life.gif?raw=true)
+
 ## Prerequisites
 
 1. Download java's arm64 static libraries built for ios. They can be downloaded using `download-deps`
@@ -35,13 +42,7 @@ $ gu install llvm-toolchain
 $ ./scripts/compile-shared
 
 ```
-This can take a while. Sometimes it gets stuck right after the setup phase:
-```
-[mobiletest-uber:18736]    classlist:   5,974.31 ms,  0.94 GB
-[mobiletest-uber:18736]        (cap):     515.76 ms,  0.94 GB
-[mobiletest-uber:18736]        setup:   4,171.70 ms,  0.94 GB
-```
-If it gets stuck directly after setup and doesn't reach the clinit phase within 3-4 minutes, try stopping the script and restarting `./scripts/compile-shared`.
+This can take a while. 
 
 2. Open the xcode project in xcode/MobileTest/MobileTest.xcodeproj  
 3. Select "Any iOS Device(arm64)" or your connected device as the build target. (iOS Simulator not supported yet)

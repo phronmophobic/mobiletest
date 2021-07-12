@@ -9,7 +9,10 @@
                                      }
 
         borkdude/sci {:mvn/version "0.2.5"}
-        babashka/babashka {:mvn/version "0.4.4"}
+
+        babashka/babashka {:mvn/version "0.4.4"
+                           ;;:local/root "../babashka"
+                           }
         cnuernber/dtype-next           {:mvn/version "8.09"
                                         ;;:local/root "../dtype-next"
                                         }

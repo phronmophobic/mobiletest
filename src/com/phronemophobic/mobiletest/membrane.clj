@@ -1,7 +1,6 @@
 (ns com.phronemophobic.mobiletest.membrane
   (:require membrane.ios
             [membrane.ui :as ui]
-            [membrane.component :as component]
             babashka.nrepl.server
             [sci.core :as sci]
             [sci.addons :as addons]
@@ -13,6 +12,11 @@
 (set! *warn-on-reflection* true)
 
 (def main-view (atom nil))
+(defonce debug-view (atom nil))
+(defonce debug-log (atom []))
+
+(defn sleep [msecs]
+  (Thread/sleep msecs))
 
 (defn ns->ns-map [ns-name]
   (let [fns (sci/create-ns ns-name nil)]
@@ -37,21 +41,69 @@
             {:namespaces
              (merge (let [ns-name 'com.phronemophobic.mobiletest.membrane
                           fns (sci/create-ns ns-name nil)]
-                      {ns-name {'main-view (sci/copy-var main-view fns)}})
+                      {ns-name {'main-view (sci/copy-var main-view fns)
+                                'debug-view (sci/copy-var debug-view fns)
+                                'debug-log (sci/copy-var debug-log fns)}})
+
+                    (let [ns-name 'clojure.core
+                          fns (sci/create-ns ns-name nil)]
+                      {ns-name {'sleep (sci/copy-var sleep fns)
+                                'main-view (sci/copy-var main-view fns)
+                                'debug-view (sci/copy-var debug-view fns)
+                                'debug-log (sci/copy-var debug-log fns)}})
+
                     (ns->ns-map 'membrane.ui))}))
 
 (def sci-ctx (sci/init opts))
 
+(defonce old-eval-msg babashka.nrepl.impl.server/eval-msg)
+
+
+(defonce clear-future (atom nil))
+
+(defn show-msg [msg]
+
+  (when-let [fut @clear-future]
+    (future-cancel fut)
+    (reset! clear-future nil))
+
+  (reset! debug-view
+          (let [body (ui/padding
+                      5 5
+                      (ui/translate 10 60
+                                    (ui/label (:code msg))))
+                [w h] (ui/bounds body)]
+            [(ui/with-color [1 1 1 0.8]
+               (ui/rectangle w h))
+             body]))
+
+  (reset! clear-future
+          (future
+            (Thread/sleep 2000)
+            (reset! debug-view nil))))
+
+(comment
+  (def server (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456}))
+  (.close (:socket server))
+
+  (require '[membrane.java2d :as backend])
+  (backend/run #(deref debug-view))
+
+  ,
+)
+
+
 (defn clj_init []
   (membrane.ios/initialize-ios)
-  (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456})
+  (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456
+                                                :show-msg show-msg})
   (println "addresses: \n"
-       (->> (NetworkInterface/getNetworkInterfaces)
-            enumeration-seq
-            (map #(.getInetAddresses ^NetworkInterface %))
-            (mapcat enumeration-seq)
-            (map #(str "\t" % "\n"))
-            (clojure.string/join))))
+           (->> (NetworkInterface/getNetworkInterfaces)
+                enumeration-seq
+                (map #(.getInetAddresses ^NetworkInterface %))
+                (mapcat enumeration-seq)
+                (map #(str "\t" % "\n"))
+                (clojure.string/join))))
 
 
 
@@ -59,6 +111,7 @@
   (try
     (membrane.ios/skia_clear ctx)
     (membrane.ios/draw! ctx @main-view)
+    (membrane.ios/draw! ctx @debug-view)
     (catch Exception e
       (prn e))))
 
