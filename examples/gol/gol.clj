@@ -39,6 +39,15 @@
            board)]))
   )
 
+(defn add-random []
+  (swap! state-atm
+         update :board
+         (fn [board]
+           (into board
+                 (repeatedly 30 (fn []
+                                  [(rand-int 20)
+                                   (rand-int 30)])))))
+  )
 
 
 (add-watch state-atm ::update-view (fn [k ref old updated]
@@ -50,5 +59,4 @@
   (dotimes [i nsteps]
     (swap! state-atm
            update :board step)
-    (sleep 500))
-  )
+    (sleep 30)))
