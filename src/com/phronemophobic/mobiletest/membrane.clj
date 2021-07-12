@@ -71,12 +71,12 @@
   (reset! debug-view
           (let [body (ui/padding
                       5 5
-                      (ui/translate 10 60
-                                    (ui/label (:code msg))))
+                      (ui/label (:code msg)))
                 [w h] (ui/bounds body)]
-            [(ui/with-color [1 1 1 0.8]
-               (ui/rectangle w h))
-             body]))
+            (ui/translate 10 60
+                          [(ui/with-color [1 1 1 0.8]
+                             (ui/rectangle w h))
+                           body])))
 
   (reset! clear-future
           (future
