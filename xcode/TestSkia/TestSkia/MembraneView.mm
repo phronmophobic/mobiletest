@@ -34,7 +34,7 @@
     UITouch* t = [touches anyObject];
     if (t){
         CGPoint pt = [t locationInView:self];
-        //clj_touch_began(self.thread, pt.x, pt.y);
+        clj_touch_began(self.thread, pt.x, pt.y);
     }
 }
 
@@ -43,7 +43,7 @@
     UITouch* t = [touches anyObject];
     if (t){
         CGPoint pt = [t locationInView:self];
-        //clj_touch_moved(self.thread, pt.x, pt.y);
+        clj_touch_moved(self.thread, pt.x, pt.y);
     }
 }
 
