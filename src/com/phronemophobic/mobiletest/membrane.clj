@@ -136,9 +136,25 @@
 
 (defn clj_touch_ended [x y]
   (try
-    (ui/mouse-down @main-view [x y])
+    (doall (ui/mouse-down @main-view [x y]))
     (catch Exception e
       (prn e))))
+
+(defn clj_touch_began [x y]
+  (try
+    (doall (ui/mouse-up @main-view [x y]))
+    (catch Exception e
+      (prn e))))
+
+(defn clj_touch_moved [x y]
+  (try
+    (let [view @main-view]
+      (doall (ui/mouse-move view [x y]))
+      (doall (ui/mouse-move-global view [x y])))
+    (catch Exception e
+      (prn e))))
+
+(defn clj_touch_cancelled [x y])
 
 (defn clj_insert_text [ptr]
   (let [s (dt-ffi/c->string ptr)]
@@ -161,13 +177,22 @@
     ((requiring-resolve 'tech.v3.datatype.ffi.graalvm/expose-clojure-functions)
      {#'clj_init {:rettype :void}
       #'clj_draw {:rettype :void
-                       :argtypes [['skia-resource :pointer]]}
+                  :argtypes [['skia-resource :pointer]]}
       #'clj_touch_ended {:rettype :void
                          :argtypes [['x :float64]
                                     ['y :float64]]}
+      #'clj_touch_began {:rettype :void
+                         :argtypes [['x :float64]
+                                    ['y :float64]]}
+      #'clj_touch_moved {:rettype :void
+                         :argtypes [['x :float64]
+                                    ['y :float64]]}
+      #'clj_touch_cancelled {:rettype :void
+                             :argtypes [['x :float64]
+                                        ['y :float64]]}
       #'clj_delete_backward {:rettype :void}
       #'clj_insert_text {:rettype :void
-                             :argtypes [['s :pointer]]}}
+                         :argtypes [['s :pointer]]}}
      
      
      'com.phronemophobic.mobiletest.membrane.interface nil)))
