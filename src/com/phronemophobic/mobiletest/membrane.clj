@@ -6,7 +6,8 @@
             [sci.addons :as addons]
             [tech.v3.datatype.ffi :as dt-ffi]
             [tech.v3.datatype :as dtype])
-  (:import java.net.NetworkInterface)
+  (:import java.net.NetworkInterface
+           java.net.InetAddress)
   (:gen-class))
 
 (set! *warn-on-reflection* true)
@@ -92,18 +93,36 @@
   ,
 )
 
+(defn get-addresses []
+  (let [addresses (->> (NetworkInterface/getNetworkInterfaces)
+                       enumeration-seq
+                       (filter (fn [interface]
+                                 (.startsWith (.getName ^NetworkInterface interface)
+                                              "en")))
+                       (map
+                        (fn [interface]
+                          (let [ip4 (->> (.getInetAddresses ^NetworkInterface interface)
+                                         enumeration-seq
+                                         (some (fn [inet]
+                                                 (when (= 4 (count
+                                                             (.getAddress ^InetAddress inet)))
+                                                   inet))))]
+                            (.getHostAddress ^InetAddress ip4)))))]
+    addresses))
 
 (defn clj_init []
   (membrane.ios/initialize-ios)
+  (let [addresses (get-addresses)
+        address-str (clojure.string/join "\n"
+                                         (map #(str % ":" 23456)
+                                              addresses))]
+    (reset! main-view (ui/translate 10 50
+                                    (ui/label address-str)))
+    (println (str
+              "addresses: \n"
+              address-str)))
   (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456
-                                                :show-msg show-msg})
-  (println "addresses: \n"
-           (->> (NetworkInterface/getNetworkInterfaces)
-                enumeration-seq
-                (map #(.getInetAddresses ^NetworkInterface %))
-                (mapcat enumeration-seq)
-                (map #(str "\t" % "\n"))
-                (clojure.string/join))))
+                                                :show-msg show-msg}))
 
 
 
