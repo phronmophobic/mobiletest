@@ -26,13 +26,29 @@
     if (t){
         CGPoint pt = [t locationInView:self];
         clj_touch_ended(self.thread, pt.x, pt.y);
-//        if (focus && ![self isFirstResponder]){
-//            [self becomeFirstResponder];
-//        }else if (!focus && [self isFirstResponder]){
-//            [self resignFirstResponder];
-//        }
     }
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches
+           withEvent:(UIEvent *)event{
+    UITouch* t = [touches anyObject];
+    if (t){
+        CGPoint pt = [t locationInView:self];
+        //clj_touch_began(self.thread, pt.x, pt.y);
+    }
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches
+           withEvent:(UIEvent *)event{
+    UITouch* t = [touches anyObject];
+    if (t){
+        CGPoint pt = [t locationInView:self];
+        //clj_touch_moved(self.thread, pt.x, pt.y);
+    }
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches
+               withEvent:(UIEvent *)event{}
 
 - (void)deleteBackward{
     clj_delete_backward(self.thread);
