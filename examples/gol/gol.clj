@@ -24,6 +24,13 @@
   (ui/translate
    30 30
    (ui/on
+    :mouse-move
+    (fn [[x y]]
+      (swap! state-atm update :board
+             conj [(int (/ x grid-size))
+                   (int (/ y grid-size))])
+      nil
+      )
     :mouse-down
     (fn [[x y]]
       (swap! state-atm update :board
