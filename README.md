@@ -140,6 +140,10 @@ Basic Drawing
 (reset! pixels [])
 ```
 
+## Slack
+
+Questions? Comments? Connect with us on clojurians slack in [#graalvm-mobile](https://clojurians.slack.com/archives/C0260KHN0Q0) (join [here](http://clojurians.net/)).
+
 
 ## License
 
