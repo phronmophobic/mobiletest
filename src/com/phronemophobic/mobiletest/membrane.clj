@@ -136,13 +136,13 @@
 
 (defn clj_touch_ended [x y]
   (try
-    (doall (ui/mouse-down @main-view [x y]))
+    (doall (ui/mouse-up @main-view [x y]))
     (catch Exception e
       (prn e))))
 
 (defn clj_touch_began [x y]
   (try
-    (doall (ui/mouse-up @main-view [x y]))
+    (doall (ui/mouse-down @main-view [x y]))
     (catch Exception e
       (prn e))))
 
