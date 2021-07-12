@@ -3,9 +3,9 @@
 
 
         com.phronemophobic/membrane {;;:mvn/version "0.9.26-beta"
-                                     :sha "4710150931dd200f72d86d3f30528879ea44b72b"
+                                     :sha "fd04d7d9345c580cb4d60a18539d51de63182e66"
                                      :git/url "https://github.com/phronmophobic/membrane"
-                                     ;;:local/root "../membrane"
+                                     ;; :local/root "../membrane"
                                      }
 
         borkdude/sci {:mvn/version "0.2.5"}
