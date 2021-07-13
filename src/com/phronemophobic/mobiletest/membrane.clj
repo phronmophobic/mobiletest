@@ -53,7 +53,11 @@
                                 'debug-view (sci/copy-var debug-view fns)
                                 'debug-log (sci/copy-var debug-log fns)}})
 
-                    (ns->ns-map 'membrane.ui))}))
+                    (ns->ns-map 'membrane.ui)
+
+                    {'clojure.main {'repl-requires
+                                    '[[clojure.repl :refer [dir doc]]]}})}))
+
 
 (def sci-ctx (sci/init opts))
 
