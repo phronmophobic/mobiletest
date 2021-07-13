@@ -10,9 +10,11 @@
 
         borkdude/sci {:mvn/version "0.2.5"}
 
-        babashka/babashka {:mvn/version "0.4.4"
-                           ;;:local/root "../babashka"
-                           }
+        babashka/babashka.nrepl { ;;:mvn/version "0.4.4"
+                                 :git/url "https://github.com/phronmophobic/babashka.nrepl"
+                                 :sha "5be63ffa9f5e26068f079e576daa2b50fca2ca1a"
+                                 ;;:local/root "../babashka"
+                                 }
         cnuernber/dtype-next           {:mvn/version "8.09"
                                         ;;:local/root "../dtype-next"
                                         }

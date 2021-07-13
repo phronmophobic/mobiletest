@@ -66,8 +66,7 @@
 
 (defonce clear-future (atom nil))
 
-(defn show-msg [msg]
-
+(defn show-code [code]
   (when-let [fut @clear-future]
     (future-cancel fut)
     (reset! clear-future nil))
@@ -75,7 +74,7 @@
   (reset! debug-view
           (let [body (ui/padding
                       5 5
-                      (ui/label (:code msg)))
+                      (ui/label code))
                 [w h] (ui/bounds body)]
             (ui/translate 10 60
                           [(ui/with-color [1 1 1 0.8]
@@ -88,7 +87,15 @@
             (reset! debug-view nil))))
 
 (comment
-  (def server (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456}))
+  (def server (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456
+                                                            :debug true
+
+                                                            :xform
+                                                            (comp babashka.nrepl.impl.server/wrap-read-msg
+                                                                  (map (fn [m]
+                                                                         (prn "received" (-> m :msg))
+                                                                         m))
+                                                                  babashka.nrepl.impl.server/wrap-process-message)}))
   (.close (:socket server))
 
   (require '[membrane.java2d :as backend])
@@ -96,6 +103,27 @@
 
   ,
 )
+
+(defn get-local-address []
+  (let [address (->> (NetworkInterface/getNetworkInterfaces)
+                       enumeration-seq
+                       (filter (fn [interface]
+                                 (.startsWith (.getName ^NetworkInterface interface)
+                                              "en")))
+                       (map
+                        (fn [interface]
+                          (let [ip4 (->> (.getInetAddresses ^NetworkInterface interface)
+                                         enumeration-seq
+                                         (some (fn [inet]
+                                                 (when (= 4 (count
+                                                             (.getAddress ^InetAddress inet)))
+                                                   inet))))]
+                            ip4)))
+                       (filter (fn [ip4]
+                                 (.isSiteLocalAddress ^InetAddress ip4)))
+                       first)]
+    address))
+
 
 (defn get-addresses []
   (let [addresses (->> (NetworkInterface/getNetworkInterfaces)
@@ -116,17 +144,27 @@
 
 (defn clj_init []
   (membrane.ios/initialize-ios)
-  (let [addresses (get-addresses)
-        address-str (clojure.string/join "\n"
-                                         (map #(str % ":" 23456)
-                                              addresses))]
+  (let [local-address (get-local-address)
+        host-address (when local-address
+                       (.getHostAddress ^InetAddress local-address))
+        address-str (if host-address
+                      (str host-address ":" 23456)
+                      "No local address found.")]
     (reset! main-view (ui/translate 10 50
                                     (ui/label address-str)))
-    (println (str
-              "addresses: \n"
-              address-str)))
-  (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456
-                                                :show-msg show-msg}))
+    (println (str "address: \n" address-str))
+    (babashka.nrepl.server/start-server! sci-ctx
+                                         {:host host-address :port 23456
+                                          :xform
+                                          (comp babashka.nrepl.impl.server/wrap-read-msg
+                                                (map (fn [m]
+                                                       (let [msg (:msg m)]
+                                                         (case (:op msg)
+                                                           :eval (show-code (:code msg))
+                                                           :load-file (show-code (:file msg))
+                                                           nil))
+                                                       m))
+                                                babashka.nrepl.impl.server/wrap-process-message)})))
 
 
 
