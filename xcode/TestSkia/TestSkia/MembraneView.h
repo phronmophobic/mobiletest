@@ -10,6 +10,10 @@
 #include "skia.h"
 #import <UIKit/UIKit.h>
 
+extern "C" {
+const char* _Nullable clj_app_dir();
+}
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MembraneView : MTKView <UIKeyInput>{

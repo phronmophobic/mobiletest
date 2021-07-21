@@ -8,6 +8,11 @@
 #import "MembraneView.h"
 #include "mobiletest-uber.h"
 
+const char* clj_app_dir(){
+    NSBundle* mb = [NSBundle mainBundle];
+    return [[mb bundlePath] UTF8String];
+}
+
 @implementation MembraneView
 
 - (BOOL) canBecomeFirstResponder{

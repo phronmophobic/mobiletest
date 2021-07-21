@@ -4,8 +4,10 @@
             babashka.nrepl.server
             [sci.core :as sci]
             [sci.addons :as addons]
+            [com.phronemophobic.mobiletest.objc :as objc]
             [tech.v3.datatype.ffi :as dt-ffi]
-            [tech.v3.datatype :as dtype])
+            [tech.v3.datatype :as dtype]
+            [clojure.java.io :as io])
   (:import java.net.NetworkInterface
            java.net.InetAddress)
   (:gen-class))
@@ -144,14 +146,23 @@
 
 (defn clj_init []
   (membrane.ios/initialize-ios)
+  (objc/initialize-objc)
+  (let [path-str (dt-ffi/c->string
+                  (objc/clj_app_dir))
+        path (io/file path-str "gol.clj")]
+    (prn "file path:"
+         path-str
+         path
+         (.exists path))
+    (sci/eval-string (slurp path) sci-ctx))
   (let [local-address (get-local-address)
         host-address (when local-address
                        (.getHostAddress ^InetAddress local-address))
         address-str (if host-address
                       (str host-address ":" 23456)
                       "No local address found.")]
-    (reset! main-view (ui/translate 10 50
-                                    (ui/label address-str)))
+    (reset! debug-view (ui/translate 10 50
+                                     (ui/label address-str)))
     (println (str "address: \n" address-str))
     (babashka.nrepl.server/start-server! sci-ctx
                                          {:host host-address :port 23456

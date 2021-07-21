@@ -21,17 +21,19 @@
 (set! *warn-on-reflection* true)
 
 (def objclib-fns
-  {:objc_msgSend {:rettype :int64
-                  :argtypes [['obj :pointer]
-                             ['sel :pointer]]}
+  {;; :objc_msgSend {:rettype :int64
+   ;;                :argtypes [['obj :pointer]
+   ;;                           ['sel :pointer]]}
 
-   :objc_make_selector {:rettype :pointer
-                        :argtypes [['sel :pointer]]}
-   :objc_make_string {:rettype :pointer
-                      :argtypes [['s :pointer]]}
+   ;; :objc_make_selector {:rettype :pointer
+   ;;                      :argtypes [['sel :pointer]]}
+   ;; :objc_make_string {:rettype :pointer
+   ;;                    :argtypes [['s :pointer]]}
 
-   :call_clj_fn {:rettype :void
-                 :argtypes [['fptr :pointer]]}
+   ;; :call_clj_fn {:rettype :void
+   ;;               :argtypes [['fptr :pointer]]}
+   :clj_app_dir {:rettype :pointer
+                 :argtypes []}
    ,})
 
 (defonce ^:private lib (dt-ffi/library-singleton #'objclib-fns))
@@ -101,7 +103,8 @@
      objclib-fns
      nil
      { ;;:header-files ["<skia.h>"]
-      :libraries ["@rpath/libcljbridge.so"]
+      :libraries [;;"@rpath/libcljbridge.so"
+                  ]
       :classname 'com.phronemophobic.objc.Bindings})))
 
 
@@ -111,7 +114,7 @@
   ;; experimenting with potential
   ;; objc interop syntax
   (def CMMotionManager (class 'CMMotionManager))
-  (objc NSString +stringWithFormat:)
+  ;; (objc NSString +stringWithFormat:)
 
   (let [motion ((alloc CMMotionManager) :init)]
     (when (motion :accelerometerAvailable)

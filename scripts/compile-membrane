@@ -15,6 +15,7 @@ rm -rf ./generated_classes && mkdir generated_classes
 
 clojure -X membrane.ios/compile-bindings 
 clojure -X com.phronemophobic.mobiletest.membrane/compile-interface-class
+clojure -X com.phronemophobic.mobiletest.objc/compile-bindings
 clojure -X:depstar-membrane
 
 INITIALIZE_AT_BUILD_TIME='clojure,tech.v3.datatype,sci.impl,babashka.nrepl,tech.v3.resource,bencode,flatland.ordered,com.phronemophobic,com.phronemophobic.mobiletest,babashka.nrepl.impl,datascript,edamame.impl,tech.v3,tech.v3.parallel,sci.addons,tech.v3.datatype.ffi,sci,primitive_math,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy,membrane.example,membrane,com.rpl.specter,riddley,com.rpl'
