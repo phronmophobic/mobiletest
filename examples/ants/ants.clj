@@ -243,15 +243,13 @@
         (remove nil?)
         [(when (pos? (:pher p))
              (ui/translate (* x scale) (* y scale)
-                           (ui/filled-rectangle
-                            [0 1 0 (/ (:pher p) pher-scale)]
-                            scale scale)))
+                           (ui/with-color [0 1 0 (/ (:pher p) pher-scale)]
+                             (ui/rectangle scale scale))))
          
          (when (pos? (:food p))
-             (ui/translate (* x scale) (* y scale)
-                           (ui/filled-rectangle
-                            [1 0 0 (/ (:food p) food-scale)]
-                            scale scale)))
+           (ui/translate (* x scale) (* y scale)
+                         (ui/with-color [1 0 0 (/ (:food p) food-scale)]
+                          (ui/rectangle scale scale))))
          (when (:ant p)
            (render-ant (:ant p) x y))])
   )
@@ -284,7 +282,7 @@
         (ui/rectangle (* dim scale)
                       (* dim scale)))
       (into []
-            (filter seq)
+            (comp cat)
             (for [x (range dim) y (range dim)]
               (render-place (v (+ (* x dim) y)) x y)))
 
@@ -300,6 +298,7 @@
                      (fn [_]
                        (swap! state-atm
                               update :running? not)
+                       (repaint)
                        nil)
                      (big-button (if (:running? @state-atm)
                                    "Stop"
@@ -314,7 +313,8 @@
 (def ants (setup))
 
 (defn repaint []
-  (reset! main-view (render)))
+  (reset! main-view (render))
+  nil)
 
 (defn step []
   (run! #(vswap! % behave)  ants)
