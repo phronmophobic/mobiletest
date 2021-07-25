@@ -272,6 +272,7 @@
       (ui/rounded-rectangle (+ w 6) h 8))
      body]))
 
+(declare repaint)
 (defn render []
   (let [v (apply vector (for [x (range dim) y (range dim)] 
                           @(place [x y])))]
