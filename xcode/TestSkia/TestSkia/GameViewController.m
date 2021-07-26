@@ -20,6 +20,7 @@
     [super viewDidLoad];
 
     _view = (MTKView*)self.view;
+    _view.multipleTouchEnabled = YES;
 
     _view.device = MTLCreateSystemDefaultDevice();
     _view.backgroundColor = UIColor.whiteColor;
