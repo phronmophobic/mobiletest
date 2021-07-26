@@ -7,8 +7,15 @@
             [com.phronemophobic.mobiletest.objc :as objc]
             [tech.v3.datatype.ffi :as dt-ffi]
             [tech.v3.datatype :as dtype]
-            [clojure.java.io :as io])
+            [clojure.java.io :as io]
+
+            ;; babashka extras
+            babashka.impl.async
+            babashka.impl.hiccup
+            babashka.impl.httpkit-client
+            babashka.impl.httpkit-server)
   (:import java.net.NetworkInterface
+           java.net.URL
            java.net.InetAddress)
   (:gen-class))
 
@@ -40,8 +47,15 @@
              {}
              (ns-publics ns-name))}))
 
+
+
+(defn url->image [s]
+  (ui/image (java.net.URL. s)))
+
 (def opts (addons/future
-            {:namespaces
+            {:classes
+             {'java.net.URL java.net.URL}
+             :namespaces
              (merge (let [ns-name 'com.phronemophobic.mobiletest.membrane
                           fns (sci/create-ns ns-name nil)]
                       {ns-name {'main-view (sci/copy-var main-view fns)
@@ -52,10 +66,25 @@
                           fns (sci/create-ns ns-name nil)]
                       {ns-name {'sleep (sci/copy-var sleep fns)
                                 'main-view (sci/copy-var main-view fns)
+                                'url->image (sci/copy-var url->image fns)
                                 'debug-view (sci/copy-var debug-view fns)
                                 'debug-log (sci/copy-var debug-log fns)}})
 
                     (ns->ns-map 'membrane.ui)
+                    (ns->ns-map 'membrane.ios)
+
+                    ;; extras
+                    {'clojure.core.async babashka.impl.async/async-namespace
+                     'clojure.core.async.impl.protocols babashka.impl.async/async-protocols-namespace
+
+                     'org.httpkit.client babashka.impl.httpkit-client/httpkit-client-namespace
+                     'org.httpkit.sni-client babashka.impl.httpkit-client/sni-client-namespace
+                     'org.httpkit.server babashka.impl.httpkit-server/httpkit-server-namespace
+
+                     'hiccup.core babashka.impl.hiccup/hiccup-namespace
+                     'hiccup2.core babashka.impl.hiccup/hiccup2-namespace
+                     'hiccup.util babashka.impl.hiccup/hiccup-util-namespace
+                     'hiccup.compiler babashka.impl.hiccup/hiccup-compiler-namespace}
 
                     {'clojure.main {'repl-requires
                                     '[[clojure.repl :refer [dir doc]]]}})}))

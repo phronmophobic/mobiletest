@@ -2,20 +2,25 @@
  :deps {org.clojure/clojure {:mvn/version "1.10.3"}
 
 
-        com.phronemophobic/membrane {;;:mvn/version "0.9.26-beta"
-                                     :sha "fd04d7d9345c580cb4d60a18539d51de63182e66"
-                                     :git/url "https://github.com/phronmophobic/membrane"
+        com.phronemophobic/membrane {:mvn/version "0.9.27.2-beta"
+                                     ;; :sha "fd04d7d9345c580cb4d60a18539d51de63182e66"
+                                     ;; :git/url "https://github.com/phronmophobic/membrane"
                                      ;; :local/root "../membrane"
                                      }
 
         borkdude/sci {:mvn/version "0.2.5"}
 
-        babashka/babashka.nrepl { ;;:mvn/version "0.4.4"
-                                 :git/url "https://github.com/phronmophobic/babashka.nrepl"
-                                 :sha "5be63ffa9f5e26068f079e576daa2b50fca2ca1a"
-                                 ;;:local/root "../babashka"
-                                 }
-        cnuernber/dtype-next           {:mvn/version "8.09"
+        ;; babashka/babashka.nrepl { ;:mvn/version "0.4.4"
+        ;;                          ;; :git/url "https://github.com/phronmophobic/babashka.nrepl"
+        ;;                          ;; :sha "5be63ffa9f5e26068f079e576daa2b50fca2ca1a"
+        ;;                          :local/root "../babashka"
+        ;;                          }
+        babashka/babashka {;; :sha "7e65ec2fa8e663c2ba9a74a3d6280c4cb0e9b274"
+                           ;; :git/url "https://github.com/phronmophobic/babashka"
+                           :local/root "../babashka"
+                           }
+
+        cnuernber/dtype-next           {:mvn/version "8.021"
                                         ;;:local/root "../dtype-next"
                                         }
         net.java.dev.jna/jna           {:mvn/version "5.8.0"}}
