@@ -144,6 +144,13 @@
                             (.getHostAddress ^InetAddress ip4)))))]
     addresses))
 
+(defn with-background [body]
+  (let [body (ui/padding 5 body)
+        [w h] (ui/bounds body)]
+    [(ui/filled-rectangle [1 1 1]
+                          w h)
+     body]))
+
 (defn clj_init []
   (membrane.ios/initialize-ios)
   (objc/initialize-objc)
@@ -162,7 +169,8 @@
                       (str host-address ":" 23456)
                       "No local address found.")]
     (reset! debug-view (ui/translate 10 50
-                                     (ui/label address-str)))
+                                     (with-background
+                                       (ui/label address-str))))
     (println (str "address: \n" address-str))
     (babashka.nrepl.server/start-server! sci-ctx
                                          {:host host-address :port 23456
