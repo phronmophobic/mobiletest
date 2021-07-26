@@ -1,0 +1,3 @@
+[submodule "examples/t3tr0s-bare"]
+	path = examples/t3tr0s-bare
+	url = https://github.com/phronmophobic/t3tr0s-bare.git
