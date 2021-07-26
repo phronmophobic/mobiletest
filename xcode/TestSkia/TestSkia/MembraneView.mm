@@ -27,8 +27,7 @@ const char* clj_app_dir(){
 */
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    UITouch* t = [touches anyObject];
-    if (t){
+    for (UITouch* t: [event allTouches]){
         CGPoint pt = [t locationInView:self];
         clj_touch_ended(self.thread, pt.x, pt.y);
     }
@@ -36,8 +35,7 @@ const char* clj_app_dir(){
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches
            withEvent:(UIEvent *)event{
-    UITouch* t = [touches anyObject];
-    if (t){
+    for (UITouch* t: [event allTouches]){
         CGPoint pt = [t locationInView:self];
         clj_touch_began(self.thread, pt.x, pt.y);
     }
@@ -45,8 +43,7 @@ const char* clj_app_dir(){
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches
            withEvent:(UIEvent *)event{
-    UITouch* t = [touches anyObject];
-    if (t){
+    for (UITouch* t: [event allTouches]){
         CGPoint pt = [t locationInView:self];
         clj_touch_moved(self.thread, pt.x, pt.y);
     }
