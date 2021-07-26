@@ -297,6 +297,9 @@ void testDraw(SkCanvas* canvas){
 //     }];
 
 //    [self _updateGameState];
+    if (!clj_needs_redraw(thread)){
+        return;
+    }
 
     
     sk_sp<SkSurface> surface = SkMtkViewToSurface(view, grContext.get());

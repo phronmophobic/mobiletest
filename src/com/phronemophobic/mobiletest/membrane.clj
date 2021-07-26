@@ -214,15 +214,26 @@
                                                        m))
                                                 babashka.nrepl.impl.server/wrap-process-message)})))
 
+(defonce last-draw (atom nil))
+
+(defn clj_needs_redraw []
+  (if (not= @last-draw
+            [@main-view @debug-view])
+    1
+    0))
 
 
 (defn clj_draw [ctx]
   (try
-    (membrane.ios/skia_clear ctx)
-    (membrane.ios/draw! ctx @main-view)
-    (membrane.ios/draw! ctx @debug-view)
+    (let [mv @main-view
+          dv @debug-view]
+      (membrane.ios/skia_clear ctx)
+      (membrane.ios/draw! ctx mv)
+      (membrane.ios/draw! ctx dv)
+      (reset! last-draw [mv dv]))
     (catch Exception e
-      (prn e))))
+      (prn e)
+      (reset! last-draw nil))))
 
 (defn clj_touch_ended [x y]
   (try
@@ -266,6 +277,9 @@
   (with-bindings {#'*compile-path* "library/classes"}
     ((requiring-resolve 'tech.v3.datatype.ffi.graalvm/expose-clojure-functions)
      {#'clj_init {:rettype :void}
+
+      #'clj_needs_redraw {:rettype :int32}
+
       #'clj_draw {:rettype :void
                   :argtypes [['skia-resource :pointer]]}
       #'clj_touch_ended {:rettype :void
