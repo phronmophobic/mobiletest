@@ -20,6 +20,10 @@
                            :local/root "../babashka"
                            }
 
+
+        com.phronemophobic/clj-objc {:local/root "../clj-objc"}
+
+
         cnuernber/dtype-next           {:mvn/version "8.021"
                                         ;;:local/root "../dtype-next"
                                         }

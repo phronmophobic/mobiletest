@@ -30,6 +30,9 @@
    ;; :objc_make_string {:rettype :pointer
    ;;                    :argtypes [['s :pointer]]}
 
+   :objc_getClass {:rettype :pointer
+                   :argtypes [['classname :pointer]]}
+
    ;; :call_clj_fn {:rettype :void
    ;;               :argtypes [['fptr :pointer]]}
    :clj_app_dir {:rettype :pointer
@@ -72,7 +75,6 @@
                         true
                         (catch ClassNotFoundException e
                           false))]
-     (println "class exists: " class-name class-exists)
      (if class-exists
        then
        else?))))
@@ -81,20 +83,15 @@
 
 (defn initialize-objc
   []
-  (println "initializing")
   (if-class com.phronemophobic.objc.Bindings
     (if (first (swap-vals!
                 initialized?*
                 (fn [init]
                   (when-not init
                     (set-library-instance! (com.phronemophobic.objc.Bindings.))
-                    (println "instance set!")
                     true))))
-      (do (println "initialized")
-          1)
-      (do
-        (println "initialize failed")
-        0))))
+      1
+      0)))
 
 (defn compile-bindings [& args]
   ;;(require '[tech.v3.datatype.ffi.graalvm :as graalvm])

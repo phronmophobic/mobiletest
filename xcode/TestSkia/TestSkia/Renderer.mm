@@ -117,6 +117,7 @@ void testDraw(SkCanvas* canvas){
         if (graal_create_isolate(NULL, &isolate, &thread) != 0) {
           fprintf(stderr, "initialization error\n");
         }
+        set_graal_isolate(isolate);
         
 
         ((MembraneView*)view).isolate = isolate;

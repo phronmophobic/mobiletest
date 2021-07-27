@@ -27,3 +27,6 @@ build/
 
 /generated_classes
 /library
+
+*.mp4
+*.gif

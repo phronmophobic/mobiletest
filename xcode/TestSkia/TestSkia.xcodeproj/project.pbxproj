@@ -12,6 +12,7 @@
 		3A110A522676B06200C5D250 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A110A512676B06200C5D250 /* MetalKit.framework */; };
 		3A110A542676B0BD00C5D250 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A110A532676B0BD00C5D250 /* ModelIO.framework */; };
 		3A1A88DA26A79B420005E9C7 /* gol.clj in Resources */ = {isa = PBXBuildFile; fileRef = 3A1A88D926A79B410005E9C7 /* gol.clj */; };
+		3A6C99A426B0CB7C000479D4 /* clj_objc.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6C99A326B0CB7C000479D4 /* clj_objc.o */; };
 		3A75F289267445BC0015D82C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F288267445BC0015D82C /* AppDelegate.m */; };
 		3A75F28C267445BC0015D82C /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F28B267445BC0015D82C /* Renderer.mm */; };
 		3A75F28F267445BC0015D82C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A75F28E267445BC0015D82C /* GameViewController.m */; };
@@ -42,6 +43,7 @@
 		3A110A512676B06200C5D250 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		3A110A532676B0BD00C5D250 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
 		3A1A88D926A79B410005E9C7 /* gol.clj */ = {isa = PBXFileReference; lastKnownFileType = text; name = gol.clj; path = ../../examples/gol/gol.clj; sourceTree = "<group>"; };
+		3A6C99A326B0CB7C000479D4 /* clj_objc.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = clj_objc.o; sourceTree = "<group>"; };
 		3A75F284267445BC0015D82C /* TestSkia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSkia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A75F287267445BC0015D82C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A75F288267445BC0015D82C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				3A7759AA26A649810014EA55 /* libmembraneiosskia.o in Frameworks */,
 				3A0761A9269A94E900E90293 /* CoreMotion.framework in Frameworks */,
 				3A110A542676B0BD00C5D250 /* ModelIO.framework in Frameworks */,
+				3A6C99A426B0CB7C000479D4 /* clj_objc.o in Frameworks */,
 				3A110A522676B06200C5D250 /* MetalKit.framework in Frameworks */,
 				3A75F2D52675C7FA0015D82C /* CoreServices.framework in Frameworks */,
 				3A75F2D32675C7F40015D82C /* Foundation.framework in Frameworks */,
@@ -143,6 +146,7 @@
 		3A75F2A72674696C0015D82C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A6C99A326B0CB7C000479D4 /* clj_objc.o */,
 				3A7759AB26A649E70014EA55 /* libskia.a */,
 				3A7759A926A649810014EA55 /* libmembraneiosskia.o */,
 				3A7759A726A646A20014EA55 /* SwiftUI.framework */,
@@ -342,6 +346,7 @@
 					"\"$(SRCROOT)/../../third_party/skia/include/gpu\"",
 					"\"$(SRCROOT)/../../third_party/skia\"",
 					"\"$(SRCROOT)/../../library\"",
+					"\"$(SRCROOT)/../../third_party/ffi\"",
 				);
 			};
 			name = Debug;
@@ -429,6 +434,7 @@
 					"\"$(SRCROOT)/../../third_party/skia/include/gpu\"",
 					"\"$(SRCROOT)/../../third_party/skia\"",
 					"\"$(SRCROOT)/../../library\"",
+					"\"$(SRCROOT)/../../third_party/ffi\"",
 				);
 				VALIDATE_PRODUCT = YES;
 			};
@@ -456,8 +462,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
-					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
 					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
 					"-L\"$(SRCROOT)/\"",
 					"-ljvm",
 					"-lnio",
@@ -506,8 +512,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
-					"-L/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.1.0/Contents/Home/lib/svm/clibraries/ios-arm64",
 					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
+					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
 					"-L\"$(SRCROOT)/\"",
 					"-ljvm",
 					"-lnio",

@@ -5,6 +5,8 @@
             [sci.core :as sci]
             [sci.addons :as addons]
             [com.phronemophobic.mobiletest.objc :as objc]
+            [com.phronemophobic.clj-objc :as clj-objc]
+
             [tech.v3.datatype.ffi :as dt-ffi]
             [tech.v3.datatype :as dtype]
             [clojure.java.io :as io]
@@ -72,6 +74,7 @@
 
                     (ns->ns-map 'membrane.ui)
                     (ns->ns-map 'membrane.ios)
+                    (ns->ns-map 'com.phronemophobic.clj-objc)
 
                     ;; extras
                     {'clojure.core.async babashka.impl.async/async-namespace
@@ -183,6 +186,7 @@
 (defn clj_init []
   (membrane.ios/initialize-ios)
   (objc/initialize-objc)
+  (clj-objc/initialize-objc)
   (let [path-str (dt-ffi/c->string
                   (objc/clj_app_dir))
         path (io/file path-str "gol.clj")]
