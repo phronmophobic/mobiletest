@@ -9,9 +9,15 @@
 #include "mobiletest-uber.h"
 #include "skia.h"
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 
 extern "C" {
 const char* _Nullable clj_app_dir();
+
+double xAcceleration(CMAccelerometerData* _Nonnull data);
+double yAcceleration(CMAccelerometerData* _Nonnull data);
+double zAcceleration(CMAccelerometerData* _Nonnull data);
+
 }
 
 NS_ASSUME_NONNULL_BEGIN

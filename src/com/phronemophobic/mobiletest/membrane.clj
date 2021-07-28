@@ -54,6 +54,11 @@
 (defn url->image [s]
   (ui/image (java.net.URL. s)))
 
+(defn acceleration->map [data]
+  {:x (objc/xAcceleration data)
+   :y (objc/yAcceleration data)
+   :z (objc/zAcceleration data)})
+
 (def opts (addons/future
             {:classes
              {'java.net.URL java.net.URL}
@@ -70,6 +75,7 @@
                                 'main-view (sci/copy-var main-view fns)
                                 'url->image (sci/copy-var url->image fns)
                                 'debug-view (sci/copy-var debug-view fns)
+                                'acceleration->map (sci/copy-var acceleration->map fns)
                                 'debug-log (sci/copy-var debug-log fns)}})
 
                     (ns->ns-map 'membrane.ui)

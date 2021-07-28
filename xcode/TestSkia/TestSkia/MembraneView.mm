@@ -13,6 +13,16 @@ const char* clj_app_dir(){
     return [[mb bundlePath] UTF8String];
 }
 
+double xAcceleration(CMAccelerometerData* data){
+    return data.acceleration.x;
+}
+double yAcceleration(CMAccelerometerData* data){
+    return data.acceleration.y;
+}
+double zAcceleration(CMAccelerometerData* data){
+    return data.acceleration.z;
+}
+
 @implementation MembraneView
 
 - (BOOL) canBecomeFirstResponder{

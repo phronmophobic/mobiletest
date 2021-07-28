@@ -30,6 +30,13 @@
    ;; :objc_make_string {:rettype :pointer
    ;;                    :argtypes [['s :pointer]]}
 
+   :xAcceleration {:rettype :float64
+                   :argtypes [['data :pointer]]}
+   :yAcceleration {:rettype :float64
+                   :argtypes [['data :pointer]]}
+   :zAcceleration {:rettype :float64
+                   :argtypes [['data :pointer]]}
+
    :objc_getClass {:rettype :pointer
                    :argtypes [['classname :pointer]]}
 
