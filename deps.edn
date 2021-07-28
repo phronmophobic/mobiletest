@@ -21,8 +21,8 @@
                            }
 
 
-        com.phronemophobic/clj-objc {;; :local/root "../clj-objc"
-                                     :sha "c30d7cdf9902f8a86d847fd2daa7f5f1655df914"
+        com.phronemophobic/clj-objc {;;:local/root "../clj-objc"
+                                     :sha "65cd2f881426e8d18a0b383ae901182ae7834189"
                                      :git/url "https://github.com/phronmophobic/clj-objc.git"
                                      }
 
