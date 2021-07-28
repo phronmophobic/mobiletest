@@ -2,10 +2,10 @@
  :deps {org.clojure/clojure {:mvn/version "1.10.3"}
 
 
-        com.phronemophobic/membrane {:mvn/version "0.9.27.2-beta"
-                                     ;; :sha "fd04d7d9345c580cb4d60a18539d51de63182e66"
-                                     ;; :git/url "https://github.com/phronmophobic/membrane"
-                                     ;; :local/root "../membrane"
+        com.phronemophobic/membrane {;; :mvn/version "0.9.27.2-beta"
+                                     :sha "e5d3723a94108dbc0784f07dc423f449a869f8b7"
+                                     :git/url "https://github.com/phronmophobic/membrane"
+                                     ;; :local/root "../membrane2"
                                      }
 
         borkdude/sci {:mvn/version "0.2.5"}
@@ -21,7 +21,10 @@
                            }
 
 
-        com.phronemophobic/clj-objc {:local/root "../clj-objc"}
+        com.phronemophobic/clj-objc {;; :local/root "../clj-objc"
+                                     :sha "c30d7cdf9902f8a86d847fd2daa7f5f1655df914"
+                                     :git/url "https://github.com/phronmophobic/clj-objc.git"
+                                     }
 
 
         cnuernber/dtype-next           {:mvn/version "8.021"

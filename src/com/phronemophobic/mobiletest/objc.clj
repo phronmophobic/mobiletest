@@ -79,6 +79,21 @@
        then
        else?))))
 
+
+
+(defn compile-bindings [& args]
+  ;;(require '[tech.v3.datatype.ffi.graalvm :as graalvm])
+  ((requiring-resolve 'tech.v3.datatype.ffi.graalvm/define-library)
+   objclib-fns
+   nil
+   { ;;:header-files ["<skia.h>"]
+    :libraries [;;"@rpath/libcljbridge.so"
+                ]
+    :classname 'com.phronemophobic.objc.Bindings}))
+
+(when *compile-files*
+  (compile-bindings))
+
 (def initialized?* (atom false))
 
 (defn initialize-objc
@@ -92,19 +107,6 @@
                     true))))
       1
       0)))
-
-(defn compile-bindings [& args]
-  ;;(require '[tech.v3.datatype.ffi.graalvm :as graalvm])
-  (with-bindings {#'*compile-path* "generated_classes"}
-    ((requiring-resolve 'tech.v3.datatype.ffi.graalvm/define-library)
-     objclib-fns
-     nil
-     { ;;:header-files ["<skia.h>"]
-      :libraries [;;"@rpath/libcljbridge.so"
-                  ]
-      :classname 'com.phronemophobic.objc.Bindings})))
-
-
 
 (comment
 
