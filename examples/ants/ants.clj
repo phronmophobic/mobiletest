@@ -324,6 +324,7 @@
 (defn run [n]
   (dotimes [i n]
     (step)
+    (repaint)
     (sleep 20)))
 
 (add-watch state-atm
