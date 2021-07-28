@@ -38,6 +38,7 @@ time \
     -H:+RemoveSaturatedTypeFlows \
     -H:-SpawnIsolates \
     -H:PageSize=16384 \
+    -H:EnableURLProtocols=http,https,jar \
     -Djdk.internal.lambda.eagerlyInitialize=false \
     -H:+ReportExceptionStackTraces \
     -H:TempDirectory="$PROJECT_DIR"/library/tmp \
