@@ -9,6 +9,10 @@ See `examples/gol`
 
 ![game-of-life](/game-of-life.gif?raw=true)
 
+## Public Beta
+
+Try the public beta iOS app through test flight https://testflight.apple.com/join/GLOKMgFX
+
 ## Prerequisites
 
 1. Download java's arm64 static libraries built for ios. They can be downloaded using `download-deps`
