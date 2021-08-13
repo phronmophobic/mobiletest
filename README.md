@@ -140,6 +140,16 @@ Basic Drawing
 (reset! pixels [])
 ```
 
+### Example projects
+
+Found in `examples/` directory.
+
+[examples/ants](examples/ants) - Classic ant sim  
+[examples/gol](examples/gol) - Game of Life  
+[examples/objc](examples/objc) - Objective-c interop  
+[t3tr0s-bare](https://github.com/phronmophobic/t3tr0s-bare) - Tetris  
+[snake](https://github.com/phronmophobic/programming-clojure) - Snake  
+
 ## Slack
 
 Questions? Comments? Connect with us on clojurians slack in [#graalvm-mobile](https://clojurians.slack.com/archives/C0260KHN0Q0) (join [here](http://clojurians.net/)).
