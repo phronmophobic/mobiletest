@@ -9,6 +9,10 @@ See `examples/gol`
 
 ![game-of-life](/game-of-life.gif?raw=true)
 
+## Public Beta
+
+Try the public beta iOS app through test flight https://testflight.apple.com/join/GLOKMgFX
+
 ## Prerequisites
 
 1. Download java's arm64 static libraries built for ios. They can be downloaded using `download-deps`
@@ -139,6 +143,16 @@ Basic Drawing
 
 (reset! pixels [])
 ```
+
+### Example projects
+
+Found in `examples/` directory.
+
+[examples/ants](examples/ants) - Classic ant sim  
+[examples/gol](examples/gol) - Game of Life  
+[examples/objc](examples/objc) - Objective-c interop  
+[t3tr0s-bare](https://github.com/phronmophobic/t3tr0s-bare) - Tetris  
+[snake](https://github.com/phronmophobic/programming-clojure) - Snake  
 
 ## Slack
 
