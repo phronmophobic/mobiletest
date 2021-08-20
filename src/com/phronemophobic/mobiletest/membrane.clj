@@ -1,18 +1,21 @@
 (ns com.phronemophobic.mobiletest.membrane
   (:require membrane.ios
             [membrane.ui :as ui]
+            membrane.component
+            membrane.basic-components
             babashka.nrepl.server
             [sci.core :as sci]
             [sci.addons :as addons]
+
+            [com.phronemophobic.mobiletest.scify :as scify]
             [com.phronemophobic.mobiletest.objc :as objc]
             [com.phronemophobic.clj-objc :as clj-objc]
 
             [tech.v3.datatype.ffi :as dt-ffi]
             [tech.v3.datatype :as dtype]
-            [clojure.java.io :as io]
-
-            ;; babashka extras
-            babashka.impl.async
+            [clojure.java.io :as io])
+   ;; babashka extras
+  (:require babashka.impl.async
             babashka.impl.hiccup
             babashka.impl.httpkit-client
             babashka.impl.httpkit-server)
@@ -29,27 +32,6 @@
 
 (defn sleep [msecs]
   (Thread/sleep msecs))
-
-(defn ns->ns-map [ns-name]
-  (let [fns (sci/create-ns ns-name nil)]
-    {ns-name
-     (reduce (fn [ns-map [var-name var]]
-               (let [m (meta var)
-                     no-doc (:no-doc m)
-                     doc (:doc m)
-                     arglists (:arglists m)]
-                 (if no-doc ns-map
-                     (assoc ns-map var-name
-                            (sci/new-var (symbol var-name) @var
-                                         (cond-> {:ns fns
-                                                  :name (:name m)}
-                                           (:macro m) (assoc :macro true)
-                                           doc (assoc :doc doc)
-                                           arglists (assoc :arglists arglists)))))))
-             {}
-             (ns-publics ns-name))}))
-
-
 
 (defn url->image [s]
   (ui/image (java.net.URL. s)))
@@ -78,9 +60,14 @@
                                 'acceleration->map (sci/copy-var acceleration->map fns)
                                 'debug-log (sci/copy-var debug-log fns)}})
 
-                    (ns->ns-map 'membrane.ui)
-                    (ns->ns-map 'membrane.ios)
-                    (ns->ns-map 'com.phronemophobic.clj-objc)
+                    (do
+                      (scify/scify-ns-protocols 'membrane.ui)
+                      (scify/ns->ns-map 'membrane.ui))
+                    (scify/ns->ns-map 'membrane.component)
+                    (scify/ns->ns-map 'membrane.basic-components)
+                    (scify/ns->ns-map 'membrane.ios)
+                    (scify/ns->ns-map 'com.phronemophobic.clj-objc)
+                    (scify/ns->ns-map 'clojure.java.io)
 
                     ;; extras
                     {'clojure.core.async babashka.impl.async/async-namespace
@@ -100,6 +87,9 @@
 
 
 (def sci-ctx (sci/init opts))
+(alter-var-root
+ #'membrane.component/*sci-ctx*
+ (constantly sci-ctx))
 
 (defonce old-eval-msg babashka.nrepl.impl.server/eval-msg)
 
@@ -132,17 +122,13 @@
 
                                                             :xform
                                                             (comp babashka.nrepl.impl.server/wrap-read-msg
-                                                                  (map (fn [m]
-                                                                         (prn "received" (-> m :msg))
-                                                                         m))
                                                                   babashka.nrepl.impl.server/wrap-process-message)}))
   (.close (:socket server))
 
   (require '[membrane.java2d :as backend])
   (backend/run #(deref debug-view))
 
-  ,
-)
+  ,)
 
 (defn get-local-address []
   (let [address (->> (NetworkInterface/getNetworkInterfaces)
