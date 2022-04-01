@@ -8,7 +8,8 @@
 #include "Bridge.h"
 
 
-#include "mobiletest-uber.h"
+//#include "mobiletest-uber.h"
+#include "bb.h"
 #import <Foundation/Foundation.h>
 #include <objc/message.h>
 //#import "objc-runtime.h"

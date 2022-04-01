@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A2474DB2670393700990899 /* llvm.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2474D92670393700990899 /* llvm.o */; };
-		3A2474DC2670393700990899 /* mobiletest-uber.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2474DA2670393700990899 /* mobiletest-uber.o */; };
+		3A80E39827F675B800C5155C /* bb.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A80E39727F675B800C5155C /* bb.o */; };
 		3A9F1D33266E9C4D0013661F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D32266E9C4D0013661F /* AppDelegate.swift */; };
 		3A9F1D35266E9C4D0013661F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D34266E9C4D0013661F /* SceneDelegate.swift */; };
 		3A9F1D37266E9C4D0013661F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F1D36266E9C4D0013661F /* ContentView.swift */; };
@@ -40,8 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A2474D92670393700990899 /* llvm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = llvm.o; path = ../../library/build/out/llvm.o; sourceTree = "<group>"; };
-		3A2474DA2670393700990899 /* mobiletest-uber.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "mobiletest-uber.o"; path = "../../library/build/out/mobiletest-uber.o"; sourceTree = "<group>"; };
+		3A80E39727F675B800C5155C /* bb.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = bb.o; path = ../../library/build/out/bb.o; sourceTree = "<group>"; };
 		3A9F1D2F266E9C4D0013661F /* MobileTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9F1D32266E9C4D0013661F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A9F1D34266E9C4D0013661F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,11 +54,6 @@
 		3A9F1D50266E9C4F0013661F /* MobileTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9F1D54266E9C4F0013661F /* MobileTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileTestUITests.swift; sourceTree = "<group>"; };
 		3A9F1D56266E9C4F0013661F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A9F1D65266E9CCC0013661F /* libmobiletest.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmobiletest.dylib; path = ../../library/libmobiletest.dylib; sourceTree = "<group>"; };
-		3A9F1D69266EA8490013661F /* mobiletest-uber.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "mobiletest-uber.o"; path = "../../librar/tmp/SVM-1623093116307/mobiletest-uber.o"; sourceTree = "<group>"; };
-		3A9F1D6B266EA9350013661F /* llvm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = llvm.o; path = "../../librar/tmp/SVM-1623093116307/llvm/llvm.o"; sourceTree = "<group>"; };
-		3A9F1D6D266EB5E30013661F /* mobiletest-uber.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "mobiletest-uber.o"; path = "../../library/tmp/SVM-1623096643724/mobiletest-uber.o"; sourceTree = "<group>"; };
-		3A9F1D6F266EB5F20013661F /* llvm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = llvm.o; path = "../../library/tmp/SVM-1623096643724/llvm/llvm.o"; sourceTree = "<group>"; };
 		3A9F1D71266EBA870013661F /* JvmFuncsFallbacks.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = JvmFuncsFallbacks.c; path = csource/JvmFuncsFallbacks.c; sourceTree = "<group>"; };
 		3A9F1D73266EBD3E0013661F /* FromGluonAppDelegate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = FromGluonAppDelegate.c; path = csource/FromGluonAppDelegate.c; sourceTree = "<group>"; };
 		3A9F1D78266EC12F0013661F /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Bridge.h; path = csource/Bridge.h; sourceTree = "<group>"; };
@@ -72,8 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A2474DB2670393700990899 /* llvm.o in Frameworks */,
-				3A2474DC2670393700990899 /* mobiletest-uber.o in Frameworks */,
+				3A80E39827F675B800C5155C /* bb.o in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,13 +154,7 @@
 		3A9F1D64266E9CCC0013661F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A9F1D6F266EB5F20013661F /* llvm.o */,
-				3A9F1D6D266EB5E30013661F /* mobiletest-uber.o */,
-				3A9F1D6B266EA9350013661F /* llvm.o */,
-				3A9F1D69266EA8490013661F /* mobiletest-uber.o */,
-				3A2474D92670393700990899 /* llvm.o */,
-				3A2474DA2670393700990899 /* mobiletest-uber.o */,
-				3A9F1D65266E9CCC0013661F /* libmobiletest.dylib */,
+				3A80E39727F675B800C5155C /* bb.o */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,8 +167,8 @@
 			buildConfigurationList = 3A9F1D59266E9C4F0013661F /* Build configuration list for PBXNativeTarget "MobileTest" */;
 			buildPhases = (
 				3A9F1D2B266E9C4D0013661F /* Sources */,
-				3A9F1D2C266E9C4D0013661F /* Frameworks */,
 				3A9F1D2D266E9C4D0013661F /* Resources */,
+				3A9F1D2C266E9C4D0013661F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -511,26 +497,50 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"-L\"$(SRCROOT)/../../build/labs-staticjdk/lib/static\"",
-					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
-					"-ljvm",
-					"-lnio",
 					"-ljava",
-					"-lextnet",
-					"-ljaas",
-					"-lsunec",
-					"-lj2pkcs11",
-					"-ldl",
-					"-lz",
-					"-lfdlibm",
-					"-lprefs",
-					"-lnet",
+					"-lnio",
 					"-lzip",
+					"-lnet",
+					"-lprefs",
+					"-ljvm",
+					"-lfdlibm",
+					"-lz",
+					"-ldl",
+					"-lj2pkcs11",
+					"-ljaas",
+					"-lextnet",
 					"-lstdc++",
-					"-ldarwin",
-					"-lffi",
-					"-llibchelper",
 					"-lpthread",
+					"-llibchelper",
+					"-lffi",
+					"-ldarwin",
+					"-Wl,-framework,Foundation",
+					"-Wl,-framework,UIKit",
+					"-Wl,-framework,CoreGraphics",
+					"-Wl,-framework,MobileCoreServices",
+					"-Wl,-framework,OpenGLES",
+					"-Wl,-framework,CoreText",
+					"-Wl,-framework,QuartzCore",
+					"-Wl,-framework,ImageIO",
+					"-Wl,-framework,CoreBluetooth",
+					"-Wl,-framework,CoreImage",
+					"-Wl,-framework,CoreLocation",
+					"-Wl,-framework,CoreMedia",
+					"-Wl,-framework,CoreMotion",
+					"-Wl,-framework,CoreVideo",
+					"-Wl,-framework,Accelerate",
+					"-Wl,-framework,AVFoundation",
+					"-Wl,-framework,AudioToolbox",
+					"-Wl,-framework,MediaPlayer",
+					"-Wl,-framework,UserNotifications",
+					"-Wl,-framework,ARKit",
+					"-Wl,-framework,AVKit",
+					"-Wl,-framework,SceneKit",
+					"-Wl,-framework,StoreKit",
+					"-Wl,-framework,ModelIO",
+					"-Wl,-framework,WebKit",
+					"-L/Users/adrian/workspace/graalvm/graalvm-ce-java17-22.0.0.2/Contents/Home/lib/svm/clibraries/26/ios-arm64",
+					"-L/Users/adrian/.gluon/substrate/javaStaticSdk/18-ea+prep18-8/ios-arm64/staticjdk/lib/static",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.phronemophobic.MobileTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,26 +568,50 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"-L\"$(SRCROOT)/../../build/labs-staticjdk/lib/static\"",
-					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
-					"-ljvm",
-					"-lnio",
 					"-ljava",
-					"-lextnet",
-					"-ljaas",
-					"-lsunec",
-					"-lj2pkcs11",
-					"-ldl",
-					"-lz",
-					"-lfdlibm",
-					"-lprefs",
-					"-lnet",
+					"-lnio",
 					"-lzip",
+					"-lnet",
+					"-lprefs",
+					"-ljvm",
+					"-lfdlibm",
+					"-lz",
+					"-ldl",
+					"-lj2pkcs11",
+					"-ljaas",
+					"-lextnet",
 					"-lstdc++",
-					"-ldarwin",
-					"-lffi",
-					"-llibchelper",
 					"-lpthread",
+					"-llibchelper",
+					"-lffi",
+					"-ldarwin",
+					"-Wl,-framework,Foundation",
+					"-Wl,-framework,UIKit",
+					"-Wl,-framework,CoreGraphics",
+					"-Wl,-framework,MobileCoreServices",
+					"-Wl,-framework,OpenGLES",
+					"-Wl,-framework,CoreText",
+					"-Wl,-framework,QuartzCore",
+					"-Wl,-framework,ImageIO",
+					"-Wl,-framework,CoreBluetooth",
+					"-Wl,-framework,CoreImage",
+					"-Wl,-framework,CoreLocation",
+					"-Wl,-framework,CoreMedia",
+					"-Wl,-framework,CoreMotion",
+					"-Wl,-framework,CoreVideo",
+					"-Wl,-framework,Accelerate",
+					"-Wl,-framework,AVFoundation",
+					"-Wl,-framework,AudioToolbox",
+					"-Wl,-framework,MediaPlayer",
+					"-Wl,-framework,UserNotifications",
+					"-Wl,-framework,ARKit",
+					"-Wl,-framework,AVKit",
+					"-Wl,-framework,SceneKit",
+					"-Wl,-framework,StoreKit",
+					"-Wl,-framework,ModelIO",
+					"-Wl,-framework,WebKit",
+					"-L/Users/adrian/workspace/graalvm/graalvm-ce-java17-22.0.0.2/Contents/Home/lib/svm/clibraries/26/ios-arm64",
+					"-L/Users/adrian/.gluon/substrate/javaStaticSdk/18-ea+prep18-8/ios-arm64/staticjdk/lib/static",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.phronemophobic.MobileTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
