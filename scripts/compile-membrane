@@ -10,12 +10,7 @@ PROJECT_DIR="$DIR/.."
 
 cd ..
 
-rm -rf ./library/classes && mkdir ./library/classes
-rm -rf ./generated_classes && mkdir generated_classes
-
 clojure -X:depstar-membrane
-
-INITIALIZE_AT_BUILD_TIME='clojure,clojure.stacktrace,tech.v3.datatype,sci.impl,babashka.nrepl,babashka.impl,hiccup,org.httpkit,tech.v3.resource,bencode,flatland.ordered,com.phronemophobic,com.phronemophobic.mobiletest,babashka.nrepl.impl,datascript,edamame.impl,tech.v3,tech.v3.parallel,sci.addons,tech.v3.datatype.ffi,sci,primitive_math,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy,membrane.example,membrane,com.rpl.specter,riddley,com.rpl'
 
 pushd library
 
@@ -24,11 +19,9 @@ rm -rf ./tmp
 time \
     $GRAALVM_HOME/bin/native-image \
     --report-unsupported-elements-at-runtime \
-    --initialize-at-build-time="$INITIALIZE_AT_BUILD_TIME" \
     '--initialize-at-run-time=org.httpkit.client.ClientSslEngineFactory$SSLHolder' \
     --no-fallback \
     --no-server \
-    -H:CompilerBackend=llvm \
     -H:+ExitAfterRelocatableImageWrite \
     -H:+SharedLibrary \
     -H:+AddAllCharsets \
@@ -54,13 +47,14 @@ time \
     -Dsvm.targetArch=arm64 \
     -H:+UseCAPCache \
     -H:CAPCacheDir="${PROJECT_DIR}"/conf/capcache \
+    -H:CompilerBackend=lir \
     '-Dsvm.platform=org.graalvm.nativeimage.Platform$IOS_AARCH64' \
     -jar ../target/mobiletest-uber.jar
 
 rm -rf ./build/out
 mkdir -p build/out
 
-find ./tmp -name 'llvm.o' -exec cp {} build/out \;
-find ./tmp -name 'mobiletest-uber.o' -exec cp {} build/out \;
+find ./tmp -name 'bb.o' -exec cp {} build/out \;
+# find ./tmp -name 'mobiletest-uber.o' -exec cp {} build/out \;
 
 popd

@@ -24,10 +24,10 @@
                            :mvn/version "0.7.8"
                            }
 
-        ;; com.phronemophobic/clj-objc { ;; :local/root "../clj-objc"
-        ;;                              :sha "76efd79cd741a65b5d2ebe92453d482e4eb39703"
-        ;;                              :git/url "https://github.com/phronmophobic/clj-objc.git"
-        ;;                              }
+        com.phronemophobic/clj-objc { ;; :local/root "../clj-objc"
+                                     :sha "76efd79cd741a65b5d2ebe92453d482e4eb39703"
+                                     :git/url "https://github.com/phronmophobic/clj-objc.git"
+                                     }
 
 
         cnuernber/dtype-next           {:mvn/version "9.021"

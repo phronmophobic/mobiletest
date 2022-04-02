@@ -20,8 +20,10 @@
 
 (set! *warn-on-reflection* true)
 
-(def objclib-fns
-  {;; :objc_msgSend {:rettype :int64
+
+
+(dt-ffi/define-library-interface
+ {;; :objc_msgSend {:rettype :int64
    ;;                :argtypes [['obj :pointer]
    ;;                           ['sel :pointer]]}
 
@@ -45,75 +47,6 @@
    :clj_app_dir {:rettype :pointer
                  :argtypes []}
    ,})
-
-(defonce ^:private lib (dt-ffi/library-singleton #'objclib-fns))
-(defn set-library-instance!
-  [lib-instance]
-  (dt-ffi/library-singleton-set-instance! lib lib-instance))
-
-(dt-ffi/library-singleton-reset! lib)
-
-(defn- find-fn
-  [fn-kwd]
-  (dt-ffi/library-singleton-find-fn lib fn-kwd))
-
-(defmacro check-error
-  [fn-def & body]
-  `(let [error-val# (long (do ~@body))]
-     (errors/when-not-errorf
-      (>= error-val# 0)
-      "Exception calling: (%d) - \"%s\""
-      error-val# (if-let [err-name#  (get av-error/value->error-map error-val#)]
-                   err-name#
-                   (str-error error-val#)))
-     error-val#))
-
-
-(dt-ffi/define-library-functions com.phronemophobic.mobiletest.objc/objclib-fns find-fn check-error)
-
-(defmacro if-class
-  ([class-name then]
-   `(if-class ~class-name
-      ~then
-      nil))
-  ([class-name then else?]
-   (let [class-exists (try
-                        (Class/forName (name class-name))
-                        true
-                        (catch ClassNotFoundException e
-                          false))]
-     (if class-exists
-       then
-       else?))))
-
-
-
-(defn compile-bindings [& args]
-  ;;(require '[tech.v3.datatype.ffi.graalvm :as graalvm])
-  ((requiring-resolve 'tech.v3.datatype.ffi.graalvm/define-library)
-   objclib-fns
-   nil
-   { ;;:header-files ["<skia.h>"]
-    :libraries [;;"@rpath/libcljbridge.so"
-                ]
-    :classname 'com.phronemophobic.objc.Bindings}))
-
-(when *compile-files*
-  (compile-bindings))
-
-(def initialized?* (atom false))
-
-(defn initialize-objc
-  []
-  (if-class com.phronemophobic.objc.Bindings
-    (if (first (swap-vals!
-                initialized?*
-                (fn [init]
-                  (when-not init
-                    (set-library-instance! (com.phronemophobic.objc.Bindings.))
-                    true))))
-      1
-      0)))
 
 (comment
 

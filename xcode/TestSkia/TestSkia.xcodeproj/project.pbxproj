@@ -33,8 +33,7 @@
 		3A7759AA26A649810014EA55 /* libmembraneiosskia.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7759A926A649810014EA55 /* libmembraneiosskia.o */; };
 		3A7759AC26A649E70014EA55 /* libskia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7759AB26A649E70014EA55 /* libskia.a */; };
 		3AC59C93269A422B00E9D1B8 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A75F2D42675C7FA0015D82C /* CoreServices.framework */; };
-		3AC59C96269A431B00E9D1B8 /* llvm.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC59C94269A431B00E9D1B8 /* llvm.o */; };
-		3AC59C97269A431B00E9D1B8 /* mobiletest-uber.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC59C95269A431B00E9D1B8 /* mobiletest-uber.o */; };
+		3AC80E7E27F7FFAA006D165F /* bb.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC80E7D27F7FFAA006D165F /* bb.o */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,8 +71,7 @@
 		3A7759A726A646A20014EA55 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		3A7759A926A649810014EA55 /* libmembraneiosskia.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = libmembraneiosskia.o; sourceTree = "<group>"; };
 		3A7759AB26A649E70014EA55 /* libskia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libskia.a; sourceTree = "<group>"; };
-		3AC59C94269A431B00E9D1B8 /* llvm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = llvm.o; path = ../../library/build/out/llvm.o; sourceTree = "<group>"; };
-		3AC59C95269A431B00E9D1B8 /* mobiletest-uber.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "mobiletest-uber.o"; path = "../../library/build/out/mobiletest-uber.o"; sourceTree = "<group>"; };
+		3AC80E7D27F7FFAA006D165F /* bb.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = bb.o; path = ../../library/build/out/bb.o; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,14 +89,13 @@
 				3A75F2D52675C7FA0015D82C /* CoreServices.framework in Frameworks */,
 				3A75F2D32675C7F40015D82C /* Foundation.framework in Frameworks */,
 				3A7759AC26A649E70014EA55 /* libskia.a in Frameworks */,
+				3AC80E7E27F7FFAA006D165F /* bb.o in Frameworks */,
 				3AC59C93269A422B00E9D1B8 /* CoreServices.framework in Frameworks */,
 				3A75F2D12675C7EA0015D82C /* UIKit.framework in Frameworks */,
 				3A75F2CF2675C7E60015D82C /* Metal.framework in Frameworks */,
 				3A75F2CD2675C7D70015D82C /* CoreText.framework in Frameworks */,
 				3A75F2CB2675C7CB0015D82C /* CoreGraphics.framework in Frameworks */,
 				3A75F2C72675C7B70015D82C /* ImageIO.framework in Frameworks */,
-				3AC59C96269A431B00E9D1B8 /* llvm.o in Frameworks */,
-				3AC59C97269A431B00E9D1B8 /* mobiletest-uber.o in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,14 +146,13 @@
 		3A75F2A72674696C0015D82C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AC80E7D27F7FFAA006D165F /* bb.o */,
 				3A6C99A526B0FC73000479D4 /* CoreFoundation.framework */,
 				3A6C99A326B0CB7C000479D4 /* clj_objc.o */,
 				3A7759AB26A649E70014EA55 /* libskia.a */,
 				3A7759A926A649810014EA55 /* libmembraneiosskia.o */,
 				3A7759A726A646A20014EA55 /* SwiftUI.framework */,
 				3A0761A8269A94E900E90293 /* CoreMotion.framework */,
-				3AC59C94269A431B00E9D1B8 /* llvm.o */,
-				3AC59C95269A431B00E9D1B8 /* mobiletest-uber.o */,
 				3A110A532676B0BD00C5D250 /* ModelIO.framework */,
 				3A110A512676B06200C5D250 /* MetalKit.framework */,
 				3A75F2D42675C7FA0015D82C /* CoreServices.framework */,
@@ -466,27 +462,50 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
-					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
-					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
-					"-L\"$(SRCROOT)/\"",
-					"-ljvm",
-					"-lnio",
 					"-ljava",
-					"-lextnet",
-					"-ljaas",
-					"-lsunec",
-					"-lj2pkcs11",
-					"-ldl",
-					"-lz",
-					"-lfdlibm",
-					"-lprefs",
-					"-lnet",
+					"-lnio",
 					"-lzip",
+					"-lnet",
+					"-lprefs",
+					"-ljvm",
+					"-lfdlibm",
+					"-lz",
+					"-ldl",
+					"-lj2pkcs11",
+					"-ljaas",
+					"-lextnet",
 					"-lstdc++",
-					"-ldarwin",
-					"-lffi",
-					"-llibchelper",
 					"-lpthread",
+					"-llibchelper",
+					"-lffi",
+					"-ldarwin",
+					"-Wl,-framework,Foundation",
+					"-Wl,-framework,UIKit",
+					"-Wl,-framework,CoreGraphics",
+					"-Wl,-framework,MobileCoreServices",
+					"-Wl,-framework,OpenGLES",
+					"-Wl,-framework,CoreText",
+					"-Wl,-framework,QuartzCore",
+					"-Wl,-framework,ImageIO",
+					"-Wl,-framework,CoreBluetooth",
+					"-Wl,-framework,CoreImage",
+					"-Wl,-framework,CoreLocation",
+					"-Wl,-framework,CoreMedia",
+					"-Wl,-framework,CoreMotion",
+					"-Wl,-framework,CoreVideo",
+					"-Wl,-framework,Accelerate",
+					"-Wl,-framework,AVFoundation",
+					"-Wl,-framework,AudioToolbox",
+					"-Wl,-framework,MediaPlayer",
+					"-Wl,-framework,UserNotifications",
+					"-Wl,-framework,ARKit",
+					"-Wl,-framework,AVKit",
+					"-Wl,-framework,SceneKit",
+					"-Wl,-framework,StoreKit",
+					"-Wl,-framework,ModelIO",
+					"-Wl,-framework,WebKit",
+					"-L/Users/adrian/workspace/graalvm/graalvm-ce-java17-22.0.0.2/Contents/Home/lib/svm/clibraries/26/ios-arm64",
+					"-L/Users/adrian/.gluon/substrate/javaStaticSdk/18-ea+prep18-8/ios-arm64/staticjdk/lib/static",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.phronemophobic.TestSkia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,27 +535,50 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
-					"-L$(PROJECT_DIR)/../../build/labs-staticjdk/lib/static",
-					"-L\"$(SRCROOT)/../../build/ios-arm64\"",
-					"-L\"$(SRCROOT)/\"",
-					"-ljvm",
-					"-lnio",
 					"-ljava",
-					"-lextnet",
-					"-ljaas",
-					"-lsunec",
-					"-lj2pkcs11",
-					"-ldl",
-					"-lz",
-					"-lfdlibm",
-					"-lprefs",
-					"-lnet",
+					"-lnio",
 					"-lzip",
+					"-lnet",
+					"-lprefs",
+					"-ljvm",
+					"-lfdlibm",
+					"-lz",
+					"-ldl",
+					"-lj2pkcs11",
+					"-ljaas",
+					"-lextnet",
 					"-lstdc++",
-					"-ldarwin",
-					"-lffi",
-					"-llibchelper",
 					"-lpthread",
+					"-llibchelper",
+					"-lffi",
+					"-ldarwin",
+					"-Wl,-framework,Foundation",
+					"-Wl,-framework,UIKit",
+					"-Wl,-framework,CoreGraphics",
+					"-Wl,-framework,MobileCoreServices",
+					"-Wl,-framework,OpenGLES",
+					"-Wl,-framework,CoreText",
+					"-Wl,-framework,QuartzCore",
+					"-Wl,-framework,ImageIO",
+					"-Wl,-framework,CoreBluetooth",
+					"-Wl,-framework,CoreImage",
+					"-Wl,-framework,CoreLocation",
+					"-Wl,-framework,CoreMedia",
+					"-Wl,-framework,CoreMotion",
+					"-Wl,-framework,CoreVideo",
+					"-Wl,-framework,Accelerate",
+					"-Wl,-framework,AVFoundation",
+					"-Wl,-framework,AudioToolbox",
+					"-Wl,-framework,MediaPlayer",
+					"-Wl,-framework,UserNotifications",
+					"-Wl,-framework,ARKit",
+					"-Wl,-framework,AVKit",
+					"-Wl,-framework,SceneKit",
+					"-Wl,-framework,StoreKit",
+					"-Wl,-framework,ModelIO",
+					"-Wl,-framework,WebKit",
+					"-L/Users/adrian/workspace/graalvm/graalvm-ce-java17-22.0.0.2/Contents/Home/lib/svm/clibraries/26/ios-arm64",
+					"-L/Users/adrian/.gluon/substrate/javaStaticSdk/18-ea+prep18-8/ios-arm64/staticjdk/lib/static",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.phronemophobic.TestSkia;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -4,10 +4,12 @@
             membrane.component
             membrane.basic-components
             babashka.nrepl.server
+            [babashka.nrepl.server.middleware :as middleware]
+            clojure.data.json
             [sci.core :as sci]
             [sci.addons :as addons]
 
-            [com.phronemophobic.mobiletest.scify :as scify]
+            [com.phronemophobic.scify :as scify]
             [com.phronemophobic.mobiletest.objc :as objc]
             [com.phronemophobic.clj-objc :as clj-objc]
 
@@ -15,10 +17,11 @@
             [tech.v3.datatype :as dtype]
             [clojure.java.io :as io])
    ;; babashka extras
-  (:require babashka.impl.async
-            babashka.impl.hiccup
+  #_(:require ;;babashka.impl.async
+            ;;babashka.impl.hiccup
             babashka.impl.httpkit-client
-            babashka.impl.httpkit-server)
+            ;;babashka.impl.httpkit-server
+            )
   (:import java.net.NetworkInterface
            java.net.URL
            java.net.InetAddress)
@@ -61,26 +64,28 @@
                                 'debug-log (sci/copy-var debug-log fns)}})
 
                     (do
-                      (scify/scify-ns-protocols 'membrane.ui)
+                      (scify/scify-ns-protocol 'membrane.ui)
                       (scify/ns->ns-map 'membrane.ui))
                     (scify/ns->ns-map 'membrane.component)
                     (scify/ns->ns-map 'membrane.basic-components)
                     (scify/ns->ns-map 'membrane.ios)
                     (scify/ns->ns-map 'com.phronemophobic.clj-objc)
                     (scify/ns->ns-map 'clojure.java.io)
+                    (scify/ns->ns-map 'clojure.data.json)
 
                     ;; extras
-                    {'clojure.core.async babashka.impl.async/async-namespace
-                     'clojure.core.async.impl.protocols babashka.impl.async/async-protocols-namespace
+                    { ;; 'clojure.core.async babashka.impl.async/async-namespace
+                     ;; 'clojure.core.async.impl.protocols babashka.impl.async/async-protocols-namespace
 
-                     'org.httpkit.client babashka.impl.httpkit-client/httpkit-client-namespace
-                     'org.httpkit.sni-client babashka.impl.httpkit-client/sni-client-namespace
-                     'org.httpkit.server babashka.impl.httpkit-server/httpkit-server-namespace
+                     ;; 'org.httpkit.client babashka.impl.httpkit-client/httpkit-client-namespace
+                     ;; 'org.httpkit.sni-client babashka.impl.httpkit-client/sni-client-namespace
+                     ;; 'org.httpkit.server babashka.impl.httpkit-server/httpkit-server-namespace
 
-                     'hiccup.core babashka.impl.hiccup/hiccup-namespace
-                     'hiccup2.core babashka.impl.hiccup/hiccup2-namespace
-                     'hiccup.util babashka.impl.hiccup/hiccup-util-namespace
-                     'hiccup.compiler babashka.impl.hiccup/hiccup-compiler-namespace}
+                     ;; 'hiccup.core babashka.impl.hiccup/hiccup-namespace
+                     ;; 'hiccup2.core babashka.impl.hiccup/hiccup2-namespace
+                     ;; 'hiccup.util babashka.impl.hiccup/hiccup-util-namespace
+                     ;; 'hiccup.compiler babashka.impl.hiccup/hiccup-compiler-namespace
+                     }
 
                     {'clojure.main {'repl-requires
                                     '[[clojure.repl :refer [dir doc]]]}})}))
@@ -120,8 +125,8 @@
   (def server (babashka.nrepl.server/start-server! sci-ctx {:host "0.0.0.0" :port 23456
                                                             :debug true
 
-                                                            :xform
-                                                            (comp babashka.nrepl.impl.server/wrap-read-msg
+                                                            #_#_ :xform
+                                                            (comp babashka.nrepl.impl.middleware/wrap-read-msg
                                                                   babashka.nrepl.impl.server/wrap-process-message)}))
   (.close (:socket server))
 
@@ -175,10 +180,25 @@
                           w h)
      body]))
 
+(def
+  ^{::middleware/requires #{#'middleware/wrap-read-msg}
+    ::middleware/expects #{#'middleware/wrap-process-message}}
+  display-evals
+  (map (fn [request]
+         (let [msg (:msg request)]
+           (case (:op msg)
+             :eval (show-code (:code msg))
+             :load-file (show-code (:file msg))
+             nil))
+         request)))
+
+;; Add cross cutting middleware
+(def xform
+  (middleware/middleware->xform
+   (conj middleware/default-middleware
+         #'display-evals)))
+
 (defn clj_init []
-  (membrane.ios/initialize-ios)
-  (objc/initialize-objc)
-  (clj-objc/initialize-objc)
   (let [path-str (dt-ffi/c->string
                   (objc/clj_app_dir))
         path (io/file path-str "gol.clj")]
@@ -199,16 +219,7 @@
     (println (str "address: \n" address-str))
     (babashka.nrepl.server/start-server! sci-ctx
                                          {:host host-address :port 23456
-                                          :xform
-                                          (comp babashka.nrepl.impl.server/wrap-read-msg
-                                                (map (fn [m]
-                                                       (let [msg (:msg m)]
-                                                         (case (:op msg)
-                                                           :eval (show-code (:code msg))
-                                                           :load-file (show-code (:file msg))
-                                                           nil))
-                                                       m))
-                                                babashka.nrepl.impl.server/wrap-process-message)})))
+                                          :xform xform})))
 
 (defonce last-draw (atom nil))
 

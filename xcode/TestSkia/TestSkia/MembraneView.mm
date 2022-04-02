@@ -6,7 +6,7 @@
 //
 
 #import "MembraneView.h"
-#include "mobiletest-uber.h"
+#include "bb.h"
 
 const char* clj_app_dir(){
     NSBundle* mb = [NSBundle mainBundle];
