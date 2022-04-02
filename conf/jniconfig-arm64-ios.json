@@ -1,5 +1,4 @@
 [
-
   {
     "name":"java.io.File",
     "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
@@ -97,6 +96,7 @@
   {
     "name" : "java.lang.String",
     "methods" : [
+      {"name":"<init>","parameterTypes":["byte[]"] },
       {"name":"<init>","parameterTypes":["byte[]","java.lang.String"] },
       {"name":"concat","parameterTypes":["java.lang.String"] },
       {"name":"getBytes","parameterTypes":["java.lang.String"] },
@@ -217,7 +217,6 @@
     "name":"java.net.Inet6Address",
     "methods":[{"name":"<init>","parameterTypes":[] }],
     "fields":[
-      {"name":"cached_scope_id"},
       {"name":"holder6"}
     ]
   }
@@ -286,8 +285,7 @@
       {"name":"address"},
       {"name":"fd"},
       {"name":"localport"},
-      {"name":"port"},
-      {"name":"serverSocket"}
+      {"name":"port"}
     ]
   }
 ,
@@ -295,22 +293,4 @@
     "name":"sun.nio.ch.FileChannelImpl",
     "fields":[{"name":"fd"}]
   }
-,
-  {
-    "name" : "java.util.Vector",
-    "methods" : [
-      {"name":"addElement","parameterTypes":["java.lang.Object"] }
-    ]
-  }
-,
-  {
-    "name" : "java.lang.Thread",
-    "methods" : [
-      {"name":"currentThread","parameterTypes":[] },
-      {"name":"setContextClassLoader","parameterTypes":["java.lang.ClassLoader"] },
-      {"name":"getContextClassLoader","parameterTypes":[] }
-    ]
-  }
-
-  
 ]

@@ -60,67 +60,40 @@
 (defn clj_callback_fn []
   (println "hello callback"))
 
-(defmacro if-class
-  ([class-name then]
-   `(if-class ~class-name
-      ~then
-      nil))
-  ([class-name then else?]
-   (let [class-exists (try
-                        (Class/forName (name class-name))
-                        true
-                        (catch ClassNotFoundException e
-                          false))]
-     (if class-exists
-       then
-       else?))))
-
-(def fptr
-  (if-class com.phronemophobic.mobiletest.interface
-    (CEntryPointLiteral/create
-     com.phronemophobic.mobiletest.interface "clj_callback_fn"
-     (into-array Class
-                 [org.graalvm.nativeimage.IsolateThread]))))
-
-(defn -main [& args])
-
 (defn compile-interface-class
   ([]
    (compile-interface-class nil))
   ([opts]
-   (with-bindings {#'*compile-path* "library/classes"}
-     ((requiring-resolve 'tech.v3.datatype.ffi.graalvm/expose-clojure-functions)
-      {
-       #'clj_sub {:rettype :int64
-                  :argtypes [['a :int64]
-                             ['b :int64]
-                             ]}
+   ((requiring-resolve 'tech.v3.datatype.ffi.graalvm/expose-clojure-functions)
+    {
+     #'clj_sub {:rettype :int64
+                :argtypes [['a :int64]
+                           ['b :int64]
+                           ]}
 
-       #'clj_add {:rettype :int64
-                  :argtypes [['a :int64]
-                             ['b :int64]]}
+     #'clj_add {:rettype :int64
+                :argtypes [['a :int64]
+                           ['b :int64]]}
 
-       #'clj_print {:rettype :void
-                    :argtypes [['bs :pointer]]}
+     #'clj_print {:rettype :void
+                  :argtypes [['bs :pointer]]}
 
-       #'clj_prn {:rettype :void
-                  :argtypes [['bs :int64]]}
+     #'clj_prn {:rettype :void
+                :argtypes [['bs :int64]]}
 
-       #'clj_eval {:rettype :int64
-                   :argtypes [['bs :pointer]]}
-       #'clj_start_server {:rettype :void
-                           :argtypes []}
+     #'clj_eval {:rettype :int64
+                 :argtypes [['bs :pointer]]}
+     #'clj_start_server {:rettype :void
+                         :argtypes []}
 
-       #'clj_print_hi {:rettype :void
-                       :argtypes []}
+     #'clj_print_hi {:rettype :void
+                     :argtypes []}
 
-       #'clj_callback_fn {:rettype :void
-                      :argtypes []}
-
-       
-
-       }
-      'com.phronemophobic.mobiletest.interface nil)))
+     #'clj_callback_fn {:rettype :void
+                        :argtypes []}}
+    'com.phronemophobic.mobiletest.interface nil))
   )
 
+(when *compile-files*
+  (compile-interface-class))
 

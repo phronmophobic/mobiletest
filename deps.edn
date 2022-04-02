@@ -1,36 +1,40 @@
-{:paths ["src" "classes" "generated_classes" "library/classes"]
- :deps {org.clojure/clojure {:mvn/version "1.10.3"}
+{:paths ["src"
+         ;; "classes" "generated_classes" "library/classes"
+]
+ :deps {org.clojure/clojure {:mvn/version "1.11.0"}
 
 
-        com.phronemophobic/membrane {;; :mvn/version "0.9.27.2-beta"
-                                     :sha "e5d3723a94108dbc0784f07dc423f449a869f8b7"
-                                     :git/url "https://github.com/phronmophobic/membrane"
+        com.phronemophobic/membrane {:mvn/version "0.9.31.8-beta"
+                                     ;; :sha "e5d3723a94108dbc0784f07dc423f449a869f8b7"
+                                     ;; :git/url "https://github.com/phronmophobic/membrane"
                                      ;; :local/root "../membrane2"
                                      }
 
-        borkdude/sci {:mvn/version "0.2.5"}
+        borkdude/sci {:mvn/version "0.2.7"
+                      ;; :local/root "../sci"
+                      }
+        com.phronemophobic/scify {:mvn/version "1.0"}
 
-        ;; babashka/babashka.nrepl { ;:mvn/version "0.4.4"
-        ;;                          ;; :git/url "https://github.com/phronmophobic/babashka.nrepl"
-        ;;                          ;; :sha "5be63ffa9f5e26068f079e576daa2b50fca2ca1a"
-        ;;                          :local/root "../babashka"
-        ;;                          }
-        babashka/babashka {;; :sha "7e65ec2fa8e663c2ba9a74a3d6280c4cb0e9b274"
+        org.clojure/data.json {:mvn/version "2.4.0"}
+
+        babashka/babashka.nrepl {:mvn/version "0.0.6"}
+        babashka/babashka { ;; :sha "7e65ec2fa8e663c2ba9a74a3d6280c4cb0e9b274"
                            ;; :git/url "https://github.com/phronmophobic/babashka"
-                           :local/root "../babashka"
+                           ;; :local/root "../babashka"
+                           :mvn/version "0.7.8"
                            }
 
+        ;; com.phronemophobic/clj-objc { ;; :local/root "../clj-objc"
+        ;;                              :sha "76efd79cd741a65b5d2ebe92453d482e4eb39703"
+        ;;                              :git/url "https://github.com/phronmophobic/clj-objc.git"
+        ;;                              }
 
-        com.phronemophobic/clj-objc {;;:local/root "../clj-objc"
-                                     :sha "65cd2f881426e8d18a0b383ae901182ae7834189"
-                                     :git/url "https://github.com/phronmophobic/clj-objc.git"
-                                     }
 
-
-        cnuernber/dtype-next           {:mvn/version "8.021"
-                                        ;;:local/root "../dtype-next"
+        cnuernber/dtype-next           {:mvn/version "9.021"
+                                        ;; :local/root "../dtype-next"
                                         }
-        net.java.dev.jna/jna           {:mvn/version "5.8.0"}}
+        net.java.dev.jna/jna           {:mvn/version "5.11.0"}
+        }
  
 
  :aliases
@@ -47,9 +51,7 @@
                :version "1.00-beta-1"
                :sync-pom true
                :aot true
-               :compile-ns [;;avclj.main avclj.libavclj
-                            com.phronemophobic.mobiletest
-                            ]
+               :compile-ns [com.phronemophobic.mobiletest]
                :main-class com.phronemophobic.mobiletest
                :jar "target/mobiletest-uber.jar"
                ;;Disable tensor code generation and ensure direct linking.
